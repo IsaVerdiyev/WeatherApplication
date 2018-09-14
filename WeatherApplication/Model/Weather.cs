@@ -72,8 +72,19 @@ namespace WeatherApplication.Model
             set { maxTemperature = value; }
         }
 
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
 
 
+        public override string ToString()
+        {
+            return Description;
+        }
 
     }
 }

@@ -49,12 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\CurrentWeather.cs" />
     <Compile Include="Model\Weather.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IWeatherInfoGetter.cs" />
     <Compile Include="Services\OpenWeatherMapWeatherInfoGetter.cs" />
+    <Compile Include="View\MainInfoView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MainInfoView.Designer.cs">
+      <DependentUpon>MainInfoView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\WeatherAppForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +75,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\MainInfoView.resx">
+      <DependentUpon>MainInfoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\WeatherAppForm.resx">
+      <DependentUpon>WeatherAppForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

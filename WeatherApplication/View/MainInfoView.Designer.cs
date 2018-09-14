@@ -1,13 +1,13 @@
 ﻿namespace WeatherApplication.View
 {
-    partial class WeatherAppForm
+    partial class MainInfoView
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,39 +20,38 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainPanel = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // MainPanel
+            // listBox1
             // 
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 0);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(837, 814);
-            this.MainPanel.TabIndex = 0;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(121, 140);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(331, 368);
+            this.listBox1.TabIndex = 0;
             // 
-            // WeatherAppForm
+            // MainInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 814);
-            this.Controls.Add(this.MainPanel);
-            this.Name = "WeatherAppForm";
-            this.Text = "WeatherAppForm";
+            this.Controls.Add(this.listBox1);
+            this.Name = "MainInfoView";
+            this.Size = new System.Drawing.Size(760, 802);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

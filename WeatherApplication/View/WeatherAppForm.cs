@@ -15,6 +15,7 @@ namespace WeatherApplication.View
         public WeatherAppForm()
         {
             InitializeComponent();
+            MainPanel.Controls.Add(new MainInfoView());
         }
     }
 }

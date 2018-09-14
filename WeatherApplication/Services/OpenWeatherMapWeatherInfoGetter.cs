@@ -15,7 +15,10 @@ namespace WeatherApplication.Services
 
         string apiKey;
 
-        
+        public OpenWeatherMapWeatherInfoGetter(string apiKey)
+        {
+            this.apiKey = apiKey;
+        }
 
         public List<Weather> GetWeathersOfCity(string city)
         {
@@ -33,7 +36,7 @@ namespace WeatherApplication.Services
         {
             using (WebClient client = new WebClient())
             {
-                return client.DownloadString($"{firstPartOfRequestForecast}{city}&APPID{apiKey}");
+                return client.DownloadString($"{firstPartOfRequestForecast}{city}&APPID={apiKey}");
             }
         }
 
@@ -49,7 +52,7 @@ namespace WeatherApplication.Services
         {
             JObject jObj = JObject.Parse(jsonResponse);
 
-            return jObj["list"].AsParallel().Select(w => new Weather
+            List<Weather> list = jObj["list"].Select(w => new Weather
                 {
                     Temperature = w.SelectToken("main.temp").Value<double>(),
                     Date = w.SelectToken("dt_txt").Value<DateTime>(),
@@ -58,8 +61,10 @@ namespace WeatherApplication.Services
                     Pressure = w.SelectToken("main.pressure").Value<double>(),
                     Humidity = w.SelectToken("main.humidity").Value<double>(),
                     WindSpeed = w.SelectToken("wind.speed").Value<double>(),
-                    IconPath = w.SelectToken("weather.icon").Value<string>()
+                    Description = w.SelectToken("weather[0].description").Value<string>(),
+                    IconPath = w.SelectToken("weather[0].icon").Value<string>()
                 }).ToList<Weather>();
+            return list;
         }
 
 
