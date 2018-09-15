@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WeatherApplication.Model;
 
 namespace WeatherApplication.Services
@@ -12,6 +13,7 @@ namespace WeatherApplication.Services
     class OpenWeatherMapWeatherInfoGetter : IWeatherInfoGetter
     {
         string firstPartOfRequestForecast = "http://api.openweathermap.org/data/2.5/forecast?&units=metric&q=";
+        string secondPartOfRequest = "&APPID=";
 
         string apiKey;
 
@@ -28,7 +30,7 @@ namespace WeatherApplication.Services
 
         public async Task<List<Weather>> GetWeathersOfCityAsync(string city)
         {
-            string response = await getResponseFromWeatherOpenMapAsync(city);
+            string response = await GetResponseFromWeatherOpenMapAsync(city);
             return ParseJsonResponseIntoListOfWeathers(response);
         }
 
@@ -36,15 +38,15 @@ namespace WeatherApplication.Services
         {
             using (WebClient client = new WebClient())
             {
-                return client.DownloadString($"{firstPartOfRequestForecast}{city}&APPID={apiKey}");
+                return client.DownloadString($"{firstPartOfRequestForecast}{city}{secondPartOfRequest}{apiKey}");
             }
         }
 
-        async Task<string> getResponseFromWeatherOpenMapAsync(string city)
+        async Task<string> GetResponseFromWeatherOpenMapAsync(string city)
         {
             using(WebClient client = new WebClient())
             {
-                return await client.DownloadStringTaskAsync($"{firstPartOfRequestForecast}{city}&APPID{apiKey}");
+                return await client.DownloadStringTaskAsync($"{firstPartOfRequestForecast}{city}{secondPartOfRequest}{apiKey}");
             }
         }
 
