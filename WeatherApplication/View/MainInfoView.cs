@@ -9,18 +9,64 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeatherApplication.Services;
 using WeatherApplication.Model;
+using WeatherApplication.Presenter;
+using WeatherApplication.Services.WeatherInfoGetter;
 
 namespace WeatherApplication.View
 {
-    public partial class MainInfoView : UserControl
+    public partial class MainInfoView : UserControl, IMainInfoView
     {
-        IWeatherInfoGetter weatherInfoGetter;
+        IMainInfoPresenter mainInfoPresenter;
         public MainInfoView()
         {
             InitializeComponent();
-            weatherInfoGetter = new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1");
-            Task<List<Weather>> weathers = weatherInfoGetter.GetWeathersOfCityAsync("Baku");
-            listBox1.DataSource = weathers.Result;
+            mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
+        }
+
+        public void UpdateListOfCitites(string city)
+        {
+
+            string selectedCity = CityListBox.SelectedItem as string;
+            CityListBox.DataSource = null;
+                       
+            CityListBox.SelectionMode = SelectionMode.None;
+            CityListBox.SelectionMode = SelectionMode.One;
+            CityListBox.DataSource = mainInfoPresenter.CityWeathers.Keys.ToList();
+
+            if (mainInfoPresenter.CityWeathers.ContainsKey(city))
+            {
+                CityListBox.SelectedItem = null;
+
+                CityListBox.SelectedItem = selectedCity;
+
+            }
+
+
+            UpdateListOfDescriptions();
+        }
+
+        public void UpdateListOfDescriptions()
+        {
+            if (CityListBox.SelectedItem != null)
+            {
+                DescriptionListBox.DataSource = null;
+                DescriptionListBox.DataSource = mainInfoPresenter.CityWeathers[CityListBox.SelectedItem as string].ForecastListOfWeathers.Select(w => w.Date).ToList();
+            }
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            mainInfoPresenter.AddCity(CityTextBox.Text);
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            mainInfoPresenter.RemoveCity(CityListBox.SelectedItem?.ToString());
+        }
+
+        private void CityListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateListOfDescriptions();
         }
     }
 }
