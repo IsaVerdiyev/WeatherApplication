@@ -12,6 +12,6 @@ namespace WeatherApplication.Presenter
         Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get; set; }
         void AddCity(string city);
         void RemoveCity(string city);
-        void UpdateInfoOfAllCities();
+        void UpdateInfoOfSelectedCity(string city);
     }
 }

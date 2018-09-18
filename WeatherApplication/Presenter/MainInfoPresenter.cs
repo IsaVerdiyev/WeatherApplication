@@ -56,20 +56,27 @@ namespace WeatherApplication.Presenter
             mainInfoView.UpdateListOfCitites(city);
         }
 
-        public async void UpdateInfoOfAllCities()
+        public async void UpdateInfoOfSelectedCity(string city)
         {
-            foreach (var city in cityWeathers)
-            {
-                Task<Weather> currentWeather = weatherInfoGetter.GetCurrentWeatherOfCityAsync(city.Key);
-                Task<List<Weather>> forecastWeathers = weatherInfoGetter.GetForecastWeathersOfCityAsync(city.Key);
-                await Task.Run(() =>
-                {
-                    CityWeathers[city.Key].CurrentWeather = currentWeather.Result;
-                    CityWeathers[city.Key].ForecastListOfWeathers = forecastWeathers.Result;
-                    CityWeathers[city.Key].LastUpdateTime = DateTime.Now;
-                    mainInfoView.UpdateListOfCitites(city.Key);
-                });
-            }
+            Task<Weather> currentWeather = weatherInfoGetter.GetCurrentWeatherOfCityAsync(city);
+            Task<List<Weather>> forecastWeathers = weatherInfoGetter.GetForecastWeathersOfCityAsync(city);
+
+            CityWeathers[city].CurrentWeather = await currentWeather;
+            CityWeathers[city].ForecastListOfWeathers = await forecastWeathers;
+            CityWeathers[city].LastUpdateTime = DateTime.Now;
+            mainInfoView.UpdateInfoAboutWeather();
+            //foreach (var city in cityWeathers)
+            //{
+            //    Task<Weather> currentWeather = weatherInfoGetter.GetCurrentWeatherOfCityAsync(city.Key);
+            //    Task<List<Weather>> forecastWeathers = weatherInfoGetter.GetForecastWeathersOfCityAsync(city.Key);
+            //    await Task.Run(() =>
+            //    {
+            //        CityWeathers[city.Key].CurrentWeather = currentWeather.Result;
+            //        CityWeathers[city.Key].ForecastListOfWeathers = forecastWeathers.Result;
+            //        CityWeathers[city.Key].LastUpdateTime = DateTime.Now;
+            //        mainInfoView.UpdateListOfCitites(city.Key);
+            //    });
+            //}
         }
     }
 }

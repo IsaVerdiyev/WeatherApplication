@@ -50,7 +50,7 @@ namespace WeatherApplication.View
             if (CityListBox.SelectedItem != null)
             {
                 DescriptionListBox.DataSource = null;
-                DescriptionListBox.DataSource = mainInfoPresenter.CityWeathers[CityListBox.SelectedItem as string].ForecastListOfWeathers.Select(w => w.Date).ToList();
+                DescriptionListBox.DataSource = new List<DateTime> { mainInfoPresenter.CityWeathers[CityListBox.SelectedItem as string].LastUpdateTime };
             }
         }
 
@@ -65,6 +65,20 @@ namespace WeatherApplication.View
         }
 
         private void CityListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateListOfDescriptions();
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            string selectedCity = CityListBox.SelectedItem as string;
+            if (selectedCity != null)
+            {
+                mainInfoPresenter.UpdateInfoOfSelectedCity(selectedCity);
+            }
+        }
+
+        public void UpdateInfoAboutWeather()
         {
             UpdateListOfDescriptions();
         }

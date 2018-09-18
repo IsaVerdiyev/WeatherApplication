@@ -9,5 +9,6 @@ namespace WeatherApplication.View
     interface IMainInfoView
     {
         void UpdateListOfCitites(string city);
+        void UpdateInfoAboutWeather();
     }
 }
