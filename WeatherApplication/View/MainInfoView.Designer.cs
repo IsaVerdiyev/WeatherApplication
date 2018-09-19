@@ -28,92 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CityListBox = new System.Windows.Forms.ListBox();
-            this.AddButton = new System.Windows.Forms.Button();
-            this.RemoveButton = new System.Windows.Forms.Button();
-            this.UpdateButton = new System.Windows.Forms.Button();
-            this.DescriptionListBox = new System.Windows.Forms.ListBox();
-            this.CityTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.RemoveCityButton = new System.Windows.Forms.Button();
+            this.AddCityButton = new System.Windows.Forms.Button();
+            this.CitiesComboBox = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CityListBox
+            // tableLayoutPanel1
             // 
-            this.CityListBox.FormattingEnabled = true;
-            this.CityListBox.Location = new System.Drawing.Point(564, 50);
-            this.CityListBox.Name = "CityListBox";
-            this.CityListBox.Size = new System.Drawing.Size(120, 95);
-            this.CityListBox.TabIndex = 0;
-            this.CityListBox.SelectedIndexChanged += new System.EventHandler(this.CityListBox_SelectedIndexChanged);
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 802);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // AddButton
+            // tableLayoutPanel2
             // 
-            this.AddButton.Location = new System.Drawing.Point(448, 50);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 1;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.tableLayoutPanel2.AutoSize = true;
+            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.RemoveCityButton, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.AddCityButton, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.CitiesComboBox, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(754, 29);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // RemoveButton
+            // RemoveCityButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(448, 98);
-            this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(75, 23);
-            this.RemoveButton.TabIndex = 2;
-            this.RemoveButton.Text = "Remove";
-            this.RemoveButton.UseVisualStyleBackColor = true;
-            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
+            this.RemoveCityButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RemoveCityButton.Location = new System.Drawing.Point(657, 3);
+            this.RemoveCityButton.Name = "RemoveCityButton";
+            this.RemoveCityButton.Size = new System.Drawing.Size(94, 23);
+            this.RemoveCityButton.TabIndex = 0;
+            this.RemoveCityButton.Text = "Remove city";
+            this.RemoveCityButton.UseVisualStyleBackColor = true;
             // 
-            // UpdateButton
+            // AddCityButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(151, 50);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(75, 23);
-            this.UpdateButton.TabIndex = 3;
-            this.UpdateButton.Text = "Update";
-            this.UpdateButton.UseVisualStyleBackColor = true;
-            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            this.AddCityButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddCityButton.Location = new System.Drawing.Point(557, 3);
+            this.AddCityButton.Name = "AddCityButton";
+            this.AddCityButton.Size = new System.Drawing.Size(94, 23);
+            this.AddCityButton.TabIndex = 1;
+            this.AddCityButton.Text = "Add city";
+            this.AddCityButton.UseVisualStyleBackColor = true;
             // 
-            // DescriptionListBox
+            // CitiesComboBox
             // 
-            this.DescriptionListBox.FormattingEnabled = true;
-            this.DescriptionListBox.Location = new System.Drawing.Point(106, 297);
-            this.DescriptionListBox.Name = "DescriptionListBox";
-            this.DescriptionListBox.Size = new System.Drawing.Size(120, 95);
-            this.DescriptionListBox.TabIndex = 4;
-            // 
-            // CityTextBox
-            // 
-            this.CityTextBox.Location = new System.Drawing.Point(586, 168);
-            this.CityTextBox.Name = "CityTextBox";
-            this.CityTextBox.Size = new System.Drawing.Size(100, 20);
-            this.CityTextBox.TabIndex = 5;
+            this.CitiesComboBox.FormattingEnabled = true;
+            this.CitiesComboBox.Location = new System.Drawing.Point(457, 3);
+            this.CitiesComboBox.Name = "CitiesComboBox";
+            this.CitiesComboBox.Size = new System.Drawing.Size(94, 21);
+            this.CitiesComboBox.TabIndex = 2;
             // 
             // MainInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.CityTextBox);
-            this.Controls.Add(this.DescriptionListBox);
-            this.Controls.Add(this.UpdateButton);
-            this.Controls.Add(this.RemoveButton);
-            this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.CityListBox);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainInfoView";
             this.Size = new System.Drawing.Size(760, 802);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox CityListBox;
-        private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button RemoveButton;
-        private System.Windows.Forms.Button UpdateButton;
-        private System.Windows.Forms.ListBox DescriptionListBox;
-        private System.Windows.Forms.TextBox CityTextBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button RemoveCityButton;
+        private System.Windows.Forms.Button AddCityButton;
+        private System.Windows.Forms.ComboBox CitiesComboBox;
     }
 }

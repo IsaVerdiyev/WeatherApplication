@@ -16,6 +16,7 @@ namespace WeatherApplication.View
         {
             InitializeComponent();
             MainPanel.Controls.Add(new MainInfoView());
+            MainPanel.Controls[0].Dock = DockStyle.Fill;
         }
     }
 }
