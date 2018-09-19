@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace WeatherApplication.View
 {
-    public partial class WeatherAppForm : Form
+    public partial class GraphUserControl : UserControl
     {
-        public WeatherAppForm()
+        public GraphUserControl()
         {
             InitializeComponent();
-            MainPanel.Controls.Add(new MainInfoView());
+            this.Dock = DockStyle.Fill;
         }
     }
 }

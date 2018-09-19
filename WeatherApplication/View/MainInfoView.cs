@@ -20,7 +20,9 @@ namespace WeatherApplication.View
         public MainInfoView()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
+            HourlyColumnTableLayoutPanel.Controls.Add(new GraphUserControl());
         }
 
         public void UpdateInfoAboutWeather()

@@ -61,6 +61,18 @@
     <Compile Include="Services\WeatherInfoGetter\Exceptions\CityNotFoundException.cs" />
     <Compile Include="Services\WeatherInfoGetter\IWeatherInfoGetter.cs" />
     <Compile Include="Services\WeatherInfoGetter\OpenWeatherMapWeatherInfoGetter.cs" />
+    <Compile Include="View\GraphUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphUserControl.Designer.cs">
+      <DependentUpon>GraphUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\HourlyDetailsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\HourlyDetailsUserControl.Designer.cs">
+      <DependentUpon>HourlyDetailsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IMainInfoView.cs" />
     <Compile Include="View\MainInfoView.cs">
       <SubType>UserControl</SubType>
@@ -83,6 +95,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\GraphUserControl.resx">
+      <DependentUpon>GraphUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HourlyDetailsUserControl.resx">
+      <DependentUpon>HourlyDetailsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainInfoView.resx">
       <DependentUpon>MainInfoView.cs</DependentUpon>
     </EmbeddedResource>
