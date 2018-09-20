@@ -61,16 +61,16 @@
     <Compile Include="Services\WeatherInfoGetter\Exceptions\CityNotFoundException.cs" />
     <Compile Include="Services\WeatherInfoGetter\IWeatherInfoGetter.cs" />
     <Compile Include="Services\WeatherInfoGetter\OpenWeatherMapWeatherInfoGetter.cs" />
-    <Compile Include="View\GraphUserControl.cs">
+    <Compile Include="View\SubViews\GraphUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\GraphUserControl.Designer.cs">
+    <Compile Include="View\SubViews\GraphUserControl.Designer.cs">
       <DependentUpon>GraphUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\HourlyDetailsUserControl.cs">
+    <Compile Include="View\SubViews\HourlyDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\HourlyDetailsUserControl.Designer.cs">
+    <Compile Include="View\SubViews\HourlyDetailsUserControl.Designer.cs">
       <DependentUpon>HourlyDetailsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\IMainInfoView.cs" />
@@ -95,10 +95,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\GraphUserControl.resx">
+    <EmbeddedResource Include="View\SubViews\GraphUserControl.resx">
       <DependentUpon>GraphUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\HourlyDetailsUserControl.resx">
+    <EmbeddedResource Include="View\SubViews\HourlyDetailsUserControl.resx">
       <DependentUpon>HourlyDetailsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainInfoView.resx">

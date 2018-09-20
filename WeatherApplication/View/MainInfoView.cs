@@ -11,6 +11,7 @@ using WeatherApplication.Services;
 using WeatherApplication.Model;
 using WeatherApplication.Presenter;
 using WeatherApplication.Services.WeatherInfoGetter;
+using WeatherApplication.View.SubViews;
 
 namespace WeatherApplication.View
 {

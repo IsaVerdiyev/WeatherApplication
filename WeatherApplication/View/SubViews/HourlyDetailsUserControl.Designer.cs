@@ -1,4 +1,4 @@
-﻿namespace WeatherApplication.View
+﻿namespace WeatherApplication.View.SubViews
 {
     partial class HourlyDetailsUserControl
     {

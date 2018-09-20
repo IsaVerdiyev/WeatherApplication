@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WeatherApplication.View
+namespace WeatherApplication.View.SubViews
 {
     public partial class HourlyDetailsUserControl : UserControl
     {
