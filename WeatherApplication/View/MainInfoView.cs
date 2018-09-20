@@ -12,6 +12,9 @@ using WeatherApplication.Model;
 using WeatherApplication.Presenter;
 using WeatherApplication.Services.WeatherInfoGetter;
 using WeatherApplication.View.SubViews;
+using WeatherApplication.Exceptions;
+using WeatherApplication.Services.WeatherInfoGetter.Exceptions;
+using System.Net;
 
 namespace WeatherApplication.View
 {
@@ -24,16 +27,53 @@ namespace WeatherApplication.View
             this.Dock = DockStyle.Fill;
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
             HourlyColumnTableLayoutPanel.Controls.Add(new GraphUserControl());
+            
         }
 
         public void UpdateInfoAboutWeather()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void UpdateListOfCitites(string city)
         {
-            throw new NotImplementedException();
+            CitiesComboBox.DataSource = mainInfoPresenter.CityWeathers.Keys.ToList();
+            CitiesComboBox.SelectedItem = city;
+            NewCityTextBox.Text = "";
+            UpdateInfoAboutWeather();
+        }
+
+        void AddCity()
+        {
+            try
+            {
+                mainInfoPresenter.AddCity(NewCityTextBox.Text);
+            }
+            catch(CityAlreadyIsInListException ex)
+            {
+                CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.Select(c => c == NewCityTextBox.Text);
+                return;
+            }
+            catch(CityNameIsNullOrWhiteSpaceException ex)
+            {
+                MessageBox.Show("Something");
+                return;
+            }
+            catch(CityNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            catch(WebException ex)
+            {
+                MessageBox.Show("There is no internet. Check internet connection");
+                return;
+            }
+        }
+
+        private void AddCityButton_Click(object sender, EventArgs e)
+        {
+            AddCity();
         }
     }
 }

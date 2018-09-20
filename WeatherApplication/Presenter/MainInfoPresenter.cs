@@ -30,9 +30,13 @@ namespace WeatherApplication.Presenter
 
         public async void AddCity(string city)
         {
+            if (String.IsNullOrWhiteSpace(city))
+            {
+                throw new CityNameIsNullOrWhiteSpaceException();
+            }
             if (CityWeathers.ContainsKey(city))
             {
-                throw new CityAlreadyIsInList();
+                throw new CityAlreadyIsInListException();
             }
 
             Weather currentWeatherOfCity = weatherInfoGetter.GetCurrentWeatherOfCity(city);
@@ -65,18 +69,6 @@ namespace WeatherApplication.Presenter
             CityWeathers[city].ForecastListOfWeathers = await forecastWeathers;
             CityWeathers[city].LastUpdateTime = DateTime.Now;
             mainInfoView.UpdateInfoAboutWeather();
-            //foreach (var city in cityWeathers)
-            //{
-            //    Task<Weather> currentWeather = weatherInfoGetter.GetCurrentWeatherOfCityAsync(city.Key);
-            //    Task<List<Weather>> forecastWeathers = weatherInfoGetter.GetForecastWeathersOfCityAsync(city.Key);
-            //    await Task.Run(() =>
-            //    {
-            //        CityWeathers[city.Key].CurrentWeather = currentWeather.Result;
-            //        CityWeathers[city.Key].ForecastListOfWeathers = forecastWeathers.Result;
-            //        CityWeathers[city.Key].LastUpdateTime = DateTime.Now;
-            //        mainInfoView.UpdateListOfCitites(city.Key);
-            //    });
-            //}
         }
     }
 }

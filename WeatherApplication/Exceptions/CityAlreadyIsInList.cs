@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace WeatherApplication.Exceptions
 {
-    class CityAlreadyIsInList: Exception
+    class CityAlreadyIsInListException: Exception
     {
-        public CityAlreadyIsInList(): base("City is already added to list")
+        public CityAlreadyIsInListException(): base("City is already added to list")
+        {
+
+        }
+        public CityAlreadyIsInListException(string message): base(message)
         {
 
         }

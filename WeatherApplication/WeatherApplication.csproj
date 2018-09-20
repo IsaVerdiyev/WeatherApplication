@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CityAlreadyIsInList.cs" />
+    <Compile Include="Exceptions\CityNameIsNullOrWhiteSpaceException.cs" />
     <Compile Include="Model\TotalInfoAboutWeatherOfCity.cs" />
     <Compile Include="Model\Weather.cs" />
     <Compile Include="Presenter\IMainInfoPresenter.cs" />
@@ -61,6 +62,12 @@
     <Compile Include="Services\WeatherInfoGetter\Exceptions\CityNotFoundException.cs" />
     <Compile Include="Services\WeatherInfoGetter\IWeatherInfoGetter.cs" />
     <Compile Include="Services\WeatherInfoGetter\OpenWeatherMapWeatherInfoGetter.cs" />
+    <Compile Include="View\SubViews\DailyItemUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SubViews\DailyItemUserControl.Designer.cs">
+      <DependentUpon>DailyItemUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SubViews\GraphUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,6 +87,12 @@
     <Compile Include="View\MainInfoView.Designer.cs">
       <DependentUpon>MainInfoView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SubViews\HourlyItemUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SubViews\HourlyItemUserControl.Designer.cs">
+      <DependentUpon>HourlyItemUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\WeatherAppForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +108,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\SubViews\DailyItemUserControl.resx">
+      <DependentUpon>DailyItemUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SubViews\GraphUserControl.resx">
       <DependentUpon>GraphUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainInfoView.resx">
       <DependentUpon>MainInfoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SubViews\HourlyItemUserControl.resx">
+      <DependentUpon>HourlyItemUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\WeatherAppForm.resx">
       <DependentUpon>WeatherAppForm.cs</DependentUpon>
