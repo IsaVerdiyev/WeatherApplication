@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace WeatherApplication.View
         public WeatherAppForm()
         {
             InitializeComponent();
+            Application.ThreadException += (object sender, ThreadExceptionEventArgs e) => Application.Exit();
             MainPanel.Controls.Add(new MainInfoView());
         }
     }

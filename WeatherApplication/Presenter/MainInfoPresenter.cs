@@ -28,7 +28,7 @@ namespace WeatherApplication.Presenter
 
         public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get => cityWeathers; set => cityWeathers = value; }
 
-        public async void AddCity(string city)
+        public async Task AddCity(string city)
         {
             if (String.IsNullOrWhiteSpace(city))
             {

@@ -15,6 +15,7 @@ using WeatherApplication.View.SubViews;
 using WeatherApplication.Exceptions;
 using WeatherApplication.Services.WeatherInfoGetter.Exceptions;
 using System.Net;
+using System.Threading;
 
 namespace WeatherApplication.View
 {
@@ -29,6 +30,8 @@ namespace WeatherApplication.View
             HourlyColumnTableLayoutPanel.Controls.Add(new GraphUserControl());
             
         }
+
+        public CancellationToken Cancelation { get; private set; }
 
         public void UpdateInfoViewAboutWeather()
         {
@@ -54,29 +57,35 @@ namespace WeatherApplication.View
 
         void AddCity()
         {
-            try
+
+             mainInfoPresenter.AddCity(NewCityTextBox.Text).ContinueWith(t =>
             {
-                mainInfoPresenter.AddCity(NewCityTextBox.Text);
-            }
-            catch(CityAlreadyIsInListException ex)
-            {
-                CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.Select(c => c == NewCityTextBox.Text);
-                
-            }
-            catch(CityNameIsNullOrWhiteSpaceException ex)
-            {
-                
-            }
-            catch(CityNotFoundException ex)
-            {
-                MessageBox.Show(ex.Message);
-                
-            }
-            catch(WebException ex)
-            {
-                MessageBox.Show("There is no internet. Check internet connection");
-               
-            }
+                try
+                {
+                    throw t.Exception.InnerExceptions.FirstOrDefault();
+                }
+                catch (CityAlreadyIsInListException ex)
+                {
+                    CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.FirstOrDefault(c => c == NewCityTextBox.Text);
+                }
+                catch (CityNameIsNullOrWhiteSpaceException ex)
+                {
+
+                }
+                catch (CityNotFoundException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch (WebException ex)
+                {
+                    MessageBox.Show("There is no internet. Check internet connection");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "caption",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+            
         }
 
         private void AddCityButton_Click(object sender, EventArgs e)

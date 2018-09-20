@@ -50,16 +50,16 @@
             this.DailyWrapperTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.DailyWeatherInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.HourlyColumnTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.HourlySettingsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.SummaryButton = new System.Windows.Forms.Button();
-            this.DetailsButton = new System.Windows.Forms.Button();
             this.dailyItemUserControl1 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.dailyItemUserControl2 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.dailyItemUserControl3 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.dailyItemUserControl4 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.dailyItemUserControl5 = new WeatherApplication.View.SubViews.DailyItemUserControl();
+            this.HourlyColumnTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.HourlySettingsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.SummaryButton = new System.Windows.Forms.Button();
+            this.DetailsButton = new System.Windows.Forms.Button();
             this.MainTableLayoutPanel.SuspendLayout();
             this.CitySettingsTableLayoutPanel.SuspendLayout();
             this.WeatherInfoWrapperPanel.SuspendLayout();
@@ -299,7 +299,7 @@
             this.PressureLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PressureLabel.Location = new System.Drawing.Point(3, 0);
             this.PressureLabel.Name = "PressureLabel";
-            this.PressureLabel.Size = new System.Drawing.Size(58, 15);
+            this.PressureLabel.Size = new System.Drawing.Size(48, 13);
             this.PressureLabel.TabIndex = 0;
             this.PressureLabel.Text = "Pressure";
             // 
@@ -307,9 +307,9 @@
             // 
             this.HumidityLabel.AutoSize = true;
             this.HumidityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HumidityLabel.Location = new System.Drawing.Point(67, 0);
+            this.HumidityLabel.Location = new System.Drawing.Point(57, 0);
             this.HumidityLabel.Name = "HumidityLabel";
-            this.HumidityLabel.Size = new System.Drawing.Size(58, 15);
+            this.HumidityLabel.Size = new System.Drawing.Size(48, 13);
             this.HumidityLabel.TabIndex = 1;
             this.HumidityLabel.Text = "Humidity";
             this.HumidityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -318,9 +318,9 @@
             // 
             this.WindLabel.AutoSize = true;
             this.WindLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WindLabel.Location = new System.Drawing.Point(131, 0);
+            this.WindLabel.Location = new System.Drawing.Point(111, 0);
             this.WindLabel.Name = "WindLabel";
-            this.WindLabel.Size = new System.Drawing.Size(60, 15);
+            this.WindLabel.Size = new System.Drawing.Size(48, 13);
             this.WindLabel.TabIndex = 2;
             this.WindLabel.Text = "Wind ";
             this.WindLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -373,6 +373,46 @@
             this.DailyWeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.DailyWeatherInfoTableLayoutPanel.Size = new System.Drawing.Size(742, 150);
             this.DailyWeatherInfoTableLayoutPanel.TabIndex = 1;
+            // 
+            // dailyItemUserControl1
+            // 
+            this.dailyItemUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dailyItemUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.dailyItemUserControl1.Name = "dailyItemUserControl1";
+            this.dailyItemUserControl1.Size = new System.Drawing.Size(142, 144);
+            this.dailyItemUserControl1.TabIndex = 0;
+            // 
+            // dailyItemUserControl2
+            // 
+            this.dailyItemUserControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dailyItemUserControl2.Location = new System.Drawing.Point(151, 3);
+            this.dailyItemUserControl2.Name = "dailyItemUserControl2";
+            this.dailyItemUserControl2.Size = new System.Drawing.Size(142, 144);
+            this.dailyItemUserControl2.TabIndex = 1;
+            // 
+            // dailyItemUserControl3
+            // 
+            this.dailyItemUserControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dailyItemUserControl3.Location = new System.Drawing.Point(299, 3);
+            this.dailyItemUserControl3.Name = "dailyItemUserControl3";
+            this.dailyItemUserControl3.Size = new System.Drawing.Size(142, 144);
+            this.dailyItemUserControl3.TabIndex = 2;
+            // 
+            // dailyItemUserControl4
+            // 
+            this.dailyItemUserControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dailyItemUserControl4.Location = new System.Drawing.Point(447, 3);
+            this.dailyItemUserControl4.Name = "dailyItemUserControl4";
+            this.dailyItemUserControl4.Size = new System.Drawing.Size(142, 144);
+            this.dailyItemUserControl4.TabIndex = 3;
+            // 
+            // dailyItemUserControl5
+            // 
+            this.dailyItemUserControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dailyItemUserControl5.Location = new System.Drawing.Point(595, 3);
+            this.dailyItemUserControl5.Name = "dailyItemUserControl5";
+            this.dailyItemUserControl5.Size = new System.Drawing.Size(144, 144);
+            this.dailyItemUserControl5.TabIndex = 4;
             // 
             // HourlyColumnTableLayoutPanel
             // 
@@ -436,46 +476,6 @@
             this.DetailsButton.TabIndex = 2;
             this.DetailsButton.Text = "Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
-            // 
-            // dailyItemUserControl1
-            // 
-            this.dailyItemUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl1.Location = new System.Drawing.Point(3, 3);
-            this.dailyItemUserControl1.Name = "dailyItemUserControl1";
-            this.dailyItemUserControl1.Size = new System.Drawing.Size(142, 144);
-            this.dailyItemUserControl1.TabIndex = 0;
-            // 
-            // dailyItemUserControl2
-            // 
-            this.dailyItemUserControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl2.Location = new System.Drawing.Point(151, 3);
-            this.dailyItemUserControl2.Name = "dailyItemUserControl2";
-            this.dailyItemUserControl2.Size = new System.Drawing.Size(142, 144);
-            this.dailyItemUserControl2.TabIndex = 1;
-            // 
-            // dailyItemUserControl3
-            // 
-            this.dailyItemUserControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl3.Location = new System.Drawing.Point(299, 3);
-            this.dailyItemUserControl3.Name = "dailyItemUserControl3";
-            this.dailyItemUserControl3.Size = new System.Drawing.Size(142, 144);
-            this.dailyItemUserControl3.TabIndex = 2;
-            // 
-            // dailyItemUserControl4
-            // 
-            this.dailyItemUserControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl4.Location = new System.Drawing.Point(447, 3);
-            this.dailyItemUserControl4.Name = "dailyItemUserControl4";
-            this.dailyItemUserControl4.Size = new System.Drawing.Size(142, 144);
-            this.dailyItemUserControl4.TabIndex = 3;
-            // 
-            // dailyItemUserControl5
-            // 
-            this.dailyItemUserControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl5.Location = new System.Drawing.Point(595, 3);
-            this.dailyItemUserControl5.Name = "dailyItemUserControl5";
-            this.dailyItemUserControl5.Size = new System.Drawing.Size(144, 144);
-            this.dailyItemUserControl5.TabIndex = 4;
             // 
             // MainInfoView
             // 

@@ -10,7 +10,7 @@ namespace WeatherApplication.Presenter
     interface IMainInfoPresenter
     {
         Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get; set; }
-        void AddCity(string city);
+        Task AddCity(string city);
         void RemoveCity(string city);
         void UpdateInfoOfSelectedCity(string city);
     }
