@@ -28,7 +28,7 @@ namespace WeatherApplication.View
             this.Dock = DockStyle.Fill;
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
             HourlyColumnTableLayoutPanel.Controls.Add(new GraphUserControl());
-            
+
         }
 
         public CancellationToken Cancelation { get; private set; }
@@ -36,7 +36,8 @@ namespace WeatherApplication.View
         public void UpdateInfoViewAboutWeather()
         {
             string selectedCity = CitiesComboBox.SelectedItem as string;
-            if (selectedCity != null) {
+            if (selectedCity != null)
+            {
                 CityNameLabel.Text = CitiesComboBox.SelectedItem as string;
                 DegreeLabel.Text = mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Temperature.ToString() + "°C";
                 DescriptionLabel.Text = mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Description;
@@ -44,6 +45,41 @@ namespace WeatherApplication.View
                 PressureLabel.Text = $"Pressure {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Pressure} hPa";
                 HumidityLabel.Text = $"Humidity {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Humidity} %";
                 WindLabel.Text = $"Wind {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.WindSpeed} m/s";
+                UpdateDailyWeatherColumn();
+            }
+        }
+
+        void UpdateDailyWeatherColumn()
+        {
+            var dailyWeathers = (from weather in mainInfoPresenter.CityWeathers[CitiesComboBox.SelectedItem as string].ForecastListOfWeathers
+                                 group weather by weather.Date.Date into weathersOfDay
+                                 orderby weathersOfDay.Key
+                                 let maxTemp = weathersOfDay.Max(x => x.MaxTemperature)
+                                 let minTemp = weathersOfDay.Min(x => x.MinTemperature)
+                                 select new Weather
+                                 {
+                                     Date = weathersOfDay.Key,
+                                     MinTemperature = minTemp,
+                                     MaxTemperature = maxTemp
+                                 }).ToList<Weather>();
+
+            DailyWeatherInfoTableLayoutPanel.Controls.Clear();
+            DailyWrapperTableLayoutPanel.ColumnCount = 0;
+            List<DailyItemUserControl> dailyItemUserControls = new List<DailyItemUserControl>();
+            for (int i = 0; i < dailyWeathers.Count; i++)
+            {
+                DailyItemUserControl dailyItemUserControl = new DailyItemUserControl();
+                dailyItemUserControl.DateLabel.Text = $"{dailyWeathers[i].Date.Day}, {dailyWeathers[i].Date.DayOfWeek.ToString()}";
+                dailyItemUserControl.TemperatureLabel.Text = $"{dailyWeathers[i].MaxTemperature}   {dailyWeathers[i].MinTemperature}";
+                dailyItemUserControls.Add(dailyItemUserControl);
+            }
+            DailyWeatherInfoTableLayoutPanel.ColumnCount = dailyItemUserControls.Count;
+            foreach (var item in dailyItemUserControls)
+            {
+                DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            }
+            for (int i = 0; i < dailyItemUserControls.Count; i++) {
+                DailyWeatherInfoTableLayoutPanel.Controls.Add(dailyItemUserControls[i], i, 0);
             }
         }
 
@@ -57,35 +93,43 @@ namespace WeatherApplication.View
 
         void AddCity()
         {
+            var ta = mainInfoPresenter.AddCity(NewCityTextBox.Text).ContinueWith(t =>
+           {
+               try
+               {
+                   throw t.Exception.InnerExceptions.FirstOrDefault();
+               }
+               catch (CityAlreadyIsInListException ex)
+               {
+                   CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.FirstOrDefault(c => c == NewCityTextBox.Text);
+               }
+               catch (CityNameIsNullOrWhiteSpaceException ex)
+               {
 
-             mainInfoPresenter.AddCity(NewCityTextBox.Text).ContinueWith(t =>
-            {
-                try
-                {
-                    throw t.Exception.InnerExceptions.FirstOrDefault();
-                }
-                catch (CityAlreadyIsInListException ex)
-                {
-                    CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.FirstOrDefault(c => c == NewCityTextBox.Text);
-                }
-                catch (CityNameIsNullOrWhiteSpaceException ex)
-                {
+               }
+               catch (CityNotFoundException ex)
+               {
+                   MessageBox.Show(ex.Message);
+               }
+               catch (WebException ex)
+               {
+                   MessageBox.Show("There is no internet. Check internet connection");
+               }
+               catch (Exception ex)
+               {
+                   MessageBox.Show(ex.Message, "caption", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                }
-                catch (CityNotFoundException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                catch (WebException ex)
-                {
-                    MessageBox.Show("There is no internet. Check internet connection");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "caption",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
-            
+               }
+           }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+
+            //try
+            //{
+
+            //    await ta;
+            //} catch (Exception e)
+            //{
+            //    MessageBox.Show(e.Message);
+            //}
         }
 
         private void AddCityButton_Click(object sender, EventArgs e)

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.ItemTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.DateLabel = new System.Windows.Forms.Label();
-            this.TemperatureLabel = new System.Windows.Forms.Label();
             this.DesciptionLabel = new System.Windows.Forms.Label();
+            this.TemperatureLabel = new System.Windows.Forms.Label();
+            this.DateLabel = new System.Windows.Forms.Label();
             this.ItemTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,14 +53,14 @@
             this.ItemTableLayoutPanel.Size = new System.Drawing.Size(150, 150);
             this.ItemTableLayoutPanel.TabIndex = 0;
             // 
-            // DateLabel
+            // DesciptionLabel
             // 
-            this.DateLabel.AutoSize = true;
-            this.DateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DateLabel.Location = new System.Drawing.Point(3, 0);
-            this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(144, 36);
-            this.DateLabel.TabIndex = 0;
+            this.DesciptionLabel.AutoSize = true;
+            this.DesciptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DesciptionLabel.Location = new System.Drawing.Point(3, 129);
+            this.DesciptionLabel.Name = "DesciptionLabel";
+            this.DesciptionLabel.Size = new System.Drawing.Size(144, 21);
+            this.DesciptionLabel.TabIndex = 3;
             // 
             // TemperatureLabel
             // 
@@ -71,14 +71,14 @@
             this.TemperatureLabel.Size = new System.Drawing.Size(144, 57);
             this.TemperatureLabel.TabIndex = 2;
             // 
-            // DesciptionLabel
+            // DateLabel
             // 
-            this.DesciptionLabel.AutoSize = true;
-            this.DesciptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DesciptionLabel.Location = new System.Drawing.Point(3, 129);
-            this.DesciptionLabel.Name = "DesciptionLabel";
-            this.DesciptionLabel.Size = new System.Drawing.Size(144, 21);
-            this.DesciptionLabel.TabIndex = 3;
+            this.DateLabel.AutoSize = true;
+            this.DateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DateLabel.Location = new System.Drawing.Point(3, 0);
+            this.DateLabel.Name = "DateLabel";
+            this.DateLabel.Size = new System.Drawing.Size(144, 36);
+            this.DateLabel.TabIndex = 0;
             // 
             // DailyItemUserControl
             // 
@@ -96,7 +96,7 @@
 
         private System.Windows.Forms.TableLayoutPanel ItemTableLayoutPanel;
         private System.Windows.Forms.Label DesciptionLabel;
-        private System.Windows.Forms.Label TemperatureLabel;
-        private System.Windows.Forms.Label DateLabel;
+        public System.Windows.Forms.Label TemperatureLabel;
+        public System.Windows.Forms.Label DateLabel;
     }
 }

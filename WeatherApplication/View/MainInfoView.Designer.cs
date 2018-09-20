@@ -50,16 +50,12 @@
             this.DailyWrapperTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.DailyWeatherInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.dailyItemUserControl1 = new WeatherApplication.View.SubViews.DailyItemUserControl();
-            this.dailyItemUserControl2 = new WeatherApplication.View.SubViews.DailyItemUserControl();
-            this.dailyItemUserControl3 = new WeatherApplication.View.SubViews.DailyItemUserControl();
-            this.dailyItemUserControl4 = new WeatherApplication.View.SubViews.DailyItemUserControl();
-            this.dailyItemUserControl5 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.HourlyColumnTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.HourlySettingsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
             this.SummaryButton = new System.Windows.Forms.Button();
             this.DetailsButton = new System.Windows.Forms.Button();
+            this.dailyItemUserControl5 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.MainTableLayoutPanel.SuspendLayout();
             this.CitySettingsTableLayoutPanel.SuspendLayout();
             this.WeatherInfoWrapperPanel.SuspendLayout();
@@ -355,17 +351,13 @@
             // 
             // DailyWeatherInfoTableLayoutPanel
             // 
-            this.DailyWeatherInfoTableLayoutPanel.ColumnCount = 5;
-            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.DailyWeatherInfoTableLayoutPanel.Controls.Add(this.dailyItemUserControl1, 0, 0);
-            this.DailyWeatherInfoTableLayoutPanel.Controls.Add(this.dailyItemUserControl2, 1, 0);
-            this.DailyWeatherInfoTableLayoutPanel.Controls.Add(this.dailyItemUserControl3, 2, 0);
-            this.DailyWeatherInfoTableLayoutPanel.Controls.Add(this.dailyItemUserControl4, 3, 0);
-            this.DailyWeatherInfoTableLayoutPanel.Controls.Add(this.dailyItemUserControl5, 4, 0);
+            this.DailyWeatherInfoTableLayoutPanel.ColumnCount = 1;
+            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DailyWeatherInfoTableLayoutPanel.Controls.Add(this.dailyItemUserControl5, 0, 0);
             this.DailyWeatherInfoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DailyWeatherInfoTableLayoutPanel.Location = new System.Drawing.Point(3, 41);
             this.DailyWeatherInfoTableLayoutPanel.Name = "DailyWeatherInfoTableLayoutPanel";
@@ -373,46 +365,6 @@
             this.DailyWeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.DailyWeatherInfoTableLayoutPanel.Size = new System.Drawing.Size(742, 150);
             this.DailyWeatherInfoTableLayoutPanel.TabIndex = 1;
-            // 
-            // dailyItemUserControl1
-            // 
-            this.dailyItemUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl1.Location = new System.Drawing.Point(3, 3);
-            this.dailyItemUserControl1.Name = "dailyItemUserControl1";
-            this.dailyItemUserControl1.Size = new System.Drawing.Size(142, 144);
-            this.dailyItemUserControl1.TabIndex = 0;
-            // 
-            // dailyItemUserControl2
-            // 
-            this.dailyItemUserControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl2.Location = new System.Drawing.Point(151, 3);
-            this.dailyItemUserControl2.Name = "dailyItemUserControl2";
-            this.dailyItemUserControl2.Size = new System.Drawing.Size(142, 144);
-            this.dailyItemUserControl2.TabIndex = 1;
-            // 
-            // dailyItemUserControl3
-            // 
-            this.dailyItemUserControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl3.Location = new System.Drawing.Point(299, 3);
-            this.dailyItemUserControl3.Name = "dailyItemUserControl3";
-            this.dailyItemUserControl3.Size = new System.Drawing.Size(142, 144);
-            this.dailyItemUserControl3.TabIndex = 2;
-            // 
-            // dailyItemUserControl4
-            // 
-            this.dailyItemUserControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl4.Location = new System.Drawing.Point(447, 3);
-            this.dailyItemUserControl4.Name = "dailyItemUserControl4";
-            this.dailyItemUserControl4.Size = new System.Drawing.Size(142, 144);
-            this.dailyItemUserControl4.TabIndex = 3;
-            // 
-            // dailyItemUserControl5
-            // 
-            this.dailyItemUserControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl5.Location = new System.Drawing.Point(595, 3);
-            this.dailyItemUserControl5.Name = "dailyItemUserControl5";
-            this.dailyItemUserControl5.Size = new System.Drawing.Size(144, 144);
-            this.dailyItemUserControl5.TabIndex = 4;
             // 
             // HourlyColumnTableLayoutPanel
             // 
@@ -477,6 +429,14 @@
             this.DetailsButton.Text = "Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
             // 
+            // dailyItemUserControl5
+            // 
+            this.dailyItemUserControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dailyItemUserControl5.Location = new System.Drawing.Point(3, 3);
+            this.dailyItemUserControl5.Name = "dailyItemUserControl5";
+            this.dailyItemUserControl5.Size = new System.Drawing.Size(736, 144);
+            this.dailyItemUserControl5.TabIndex = 4;
+            // 
             // MainInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,10 +498,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button SummaryButton;
         private System.Windows.Forms.Button DetailsButton;
-        private SubViews.DailyItemUserControl dailyItemUserControl1;
-        private SubViews.DailyItemUserControl dailyItemUserControl2;
-        private SubViews.DailyItemUserControl dailyItemUserControl3;
-        private SubViews.DailyItemUserControl dailyItemUserControl4;
         private SubViews.DailyItemUserControl dailyItemUserControl5;
         private System.Windows.Forms.TextBox NewCityTextBox;
     }
