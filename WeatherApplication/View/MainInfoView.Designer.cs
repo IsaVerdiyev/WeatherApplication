@@ -33,6 +33,7 @@
             this.RemoveCityButton = new System.Windows.Forms.Button();
             this.AddCityButton = new System.Windows.Forms.Button();
             this.CitiesComboBox = new System.Windows.Forms.ComboBox();
+            this.NewCityTextBox = new System.Windows.Forms.TextBox();
             this.WeatherInfoWrapperPanel = new System.Windows.Forms.Panel();
             this.WeatherInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CurrentTemperatureTableLayoutPanelWrapper = new System.Windows.Forms.TableLayoutPanel();
@@ -54,7 +55,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.SummaryButton = new System.Windows.Forms.Button();
             this.DetailsButton = new System.Windows.Forms.Button();
-            this.NewCityTextBox = new System.Windows.Forms.TextBox();
             this.dailyItemUserControl1 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.dailyItemUserControl2 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.dailyItemUserControl3 = new WeatherApplication.View.SubViews.DailyItemUserControl();
@@ -139,6 +139,15 @@
             this.CitiesComboBox.Name = "CitiesComboBox";
             this.CitiesComboBox.Size = new System.Drawing.Size(94, 21);
             this.CitiesComboBox.TabIndex = 2;
+            this.CitiesComboBox.SelectedIndexChanged += new System.EventHandler(this.CitiesComboBox_SelectedIndexChanged);
+            // 
+            // NewCityTextBox
+            // 
+            this.NewCityTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NewCityTextBox.Location = new System.Drawing.Point(457, 3);
+            this.NewCityTextBox.Name = "NewCityTextBox";
+            this.NewCityTextBox.Size = new System.Drawing.Size(94, 20);
+            this.NewCityTextBox.TabIndex = 3;
             // 
             // WeatherInfoWrapperPanel
             // 
@@ -170,6 +179,8 @@
             // 
             // CurrentTemperatureTableLayoutPanelWrapper
             // 
+            this.CurrentTemperatureTableLayoutPanelWrapper.AutoSize = true;
+            this.CurrentTemperatureTableLayoutPanelWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CurrentTemperatureTableLayoutPanelWrapper.ColumnCount = 3;
             this.CurrentTemperatureTableLayoutPanelWrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.CurrentTemperatureTableLayoutPanelWrapper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -185,6 +196,8 @@
             // 
             // CurrentTemperatureTableLayoutPanel
             // 
+            this.CurrentTemperatureTableLayoutPanel.AutoSize = true;
+            this.CurrentTemperatureTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CurrentTemperatureTableLayoutPanel.ColumnCount = 1;
             this.CurrentTemperatureTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.CityNameLabel, 0, 0);
@@ -193,7 +206,7 @@
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.LastUpdateTimeLabel, 0, 3);
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.CurrentTemperatureAdditionalInfoTableLayoutPanel, 0, 4);
             this.CurrentTemperatureTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CurrentTemperatureTableLayoutPanel.Location = new System.Drawing.Point(274, 3);
+            this.CurrentTemperatureTableLayoutPanel.Location = new System.Drawing.Point(290, 3);
             this.CurrentTemperatureTableLayoutPanel.Name = "CurrentTemperatureTableLayoutPanel";
             this.CurrentTemperatureTableLayoutPanel.RowCount = 5;
             this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -201,7 +214,7 @@
             this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.CurrentTemperatureTableLayoutPanel.Size = new System.Drawing.Size(200, 188);
+            this.CurrentTemperatureTableLayoutPanel.Size = new System.Drawing.Size(168, 188);
             this.CurrentTemperatureTableLayoutPanel.TabIndex = 0;
             // 
             // CityNameLabel
@@ -210,12 +223,14 @@
             this.CityNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CityNameLabel.Location = new System.Drawing.Point(3, 0);
             this.CityNameLabel.Name = "CityNameLabel";
-            this.CityNameLabel.Size = new System.Drawing.Size(194, 37);
+            this.CityNameLabel.Size = new System.Drawing.Size(162, 37);
             this.CityNameLabel.TabIndex = 0;
             this.CityNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DegreeImageTableLayoutPanel
             // 
+            this.DegreeImageTableLayoutPanel.AutoSize = true;
+            this.DegreeImageTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.DegreeImageTableLayoutPanel.ColumnCount = 3;
             this.DegreeImageTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.DegreeImageTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -226,16 +241,16 @@
             this.DegreeImageTableLayoutPanel.Name = "DegreeImageTableLayoutPanel";
             this.DegreeImageTableLayoutPanel.RowCount = 1;
             this.DegreeImageTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.DegreeImageTableLayoutPanel.Size = new System.Drawing.Size(194, 69);
+            this.DegreeImageTableLayoutPanel.Size = new System.Drawing.Size(162, 69);
             this.DegreeImageTableLayoutPanel.TabIndex = 1;
             // 
             // DegreeLabel
             // 
             this.DegreeLabel.AutoSize = true;
             this.DegreeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DegreeLabel.Location = new System.Drawing.Point(51, 0);
+            this.DegreeLabel.Location = new System.Drawing.Point(43, 0);
             this.DegreeLabel.Name = "DegreeLabel";
-            this.DegreeLabel.Size = new System.Drawing.Size(91, 69);
+            this.DegreeLabel.Size = new System.Drawing.Size(75, 69);
             this.DegreeLabel.TabIndex = 0;
             this.DegreeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -245,8 +260,9 @@
             this.DescriptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DescriptionLabel.Location = new System.Drawing.Point(3, 112);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(194, 37);
+            this.DescriptionLabel.Size = new System.Drawing.Size(162, 37);
             this.DescriptionLabel.TabIndex = 2;
+            this.DescriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LastUpdateTimeLabel
             // 
@@ -254,13 +270,15 @@
             this.LastUpdateTimeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LastUpdateTimeLabel.Location = new System.Drawing.Point(3, 149);
             this.LastUpdateTimeLabel.Name = "LastUpdateTimeLabel";
-            this.LastUpdateTimeLabel.Size = new System.Drawing.Size(194, 18);
+            this.LastUpdateTimeLabel.Size = new System.Drawing.Size(162, 18);
             this.LastUpdateTimeLabel.TabIndex = 3;
             this.LastUpdateTimeLabel.Text = "Last updated at ";
             this.LastUpdateTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CurrentTemperatureAdditionalInfoTableLayoutPanel
             // 
+            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.AutoSize = true;
+            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.ColumnCount = 3;
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -272,8 +290,7 @@
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Name = "CurrentTemperatureAdditionalInfoTableLayoutPanel";
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.RowCount = 1;
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Size = new System.Drawing.Size(194, 15);
+            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Size = new System.Drawing.Size(162, 13);
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.TabIndex = 4;
             // 
             // PressureLabel
@@ -289,9 +306,10 @@
             // HumidityLabel
             // 
             this.HumidityLabel.AutoSize = true;
+            this.HumidityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HumidityLabel.Location = new System.Drawing.Point(67, 0);
             this.HumidityLabel.Name = "HumidityLabel";
-            this.HumidityLabel.Size = new System.Drawing.Size(47, 13);
+            this.HumidityLabel.Size = new System.Drawing.Size(58, 15);
             this.HumidityLabel.TabIndex = 1;
             this.HumidityLabel.Text = "Humidity";
             this.HumidityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -419,14 +437,6 @@
             this.DetailsButton.Text = "Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
             // 
-            // NewCityTextBox
-            // 
-            this.NewCityTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NewCityTextBox.Location = new System.Drawing.Point(457, 3);
-            this.NewCityTextBox.Name = "NewCityTextBox";
-            this.NewCityTextBox.Size = new System.Drawing.Size(94, 20);
-            this.NewCityTextBox.TabIndex = 3;
-            // 
             // dailyItemUserControl1
             // 
             this.dailyItemUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -481,7 +491,9 @@
             this.WeatherInfoWrapperPanel.ResumeLayout(false);
             this.WeatherInfoWrapperPanel.PerformLayout();
             this.WeatherInfoTableLayoutPanel.ResumeLayout(false);
+            this.WeatherInfoTableLayoutPanel.PerformLayout();
             this.CurrentTemperatureTableLayoutPanelWrapper.ResumeLayout(false);
+            this.CurrentTemperatureTableLayoutPanelWrapper.PerformLayout();
             this.CurrentTemperatureTableLayoutPanel.ResumeLayout(false);
             this.CurrentTemperatureTableLayoutPanel.PerformLayout();
             this.DegreeImageTableLayoutPanel.ResumeLayout(false);

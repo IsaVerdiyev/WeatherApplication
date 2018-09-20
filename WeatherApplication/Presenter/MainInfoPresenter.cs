@@ -68,7 +68,7 @@ namespace WeatherApplication.Presenter
             CityWeathers[city].CurrentWeather = await currentWeather;
             CityWeathers[city].ForecastListOfWeathers = await forecastWeathers;
             CityWeathers[city].LastUpdateTime = DateTime.Now;
-            mainInfoView.UpdateInfoAboutWeather();
+            mainInfoView.UpdateInfoViewAboutWeather();
         }
     }
 }

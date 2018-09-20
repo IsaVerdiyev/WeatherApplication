@@ -30,9 +30,18 @@ namespace WeatherApplication.View
             
         }
 
-        public void UpdateInfoAboutWeather()
+        public void UpdateInfoViewAboutWeather()
         {
-            
+            string selectedCity = CitiesComboBox.SelectedItem as string;
+            if (selectedCity != null) {
+                CityNameLabel.Text = CitiesComboBox.SelectedItem as string;
+                DegreeLabel.Text = mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Temperature.ToString() + "°C";
+                DescriptionLabel.Text = mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Description;
+                LastUpdateTimeLabel.Text = $"Last update time {mainInfoPresenter.CityWeathers[selectedCity].LastUpdateTime.ToShortTimeString()}";
+                PressureLabel.Text = $"Pressure {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Pressure} hPa";
+                HumidityLabel.Text = $"Humidity {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Humidity} %";
+                WindLabel.Text = $"Wind {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.WindSpeed} m/s";
+            }
         }
 
         public void UpdateListOfCitites(string city)
@@ -40,7 +49,7 @@ namespace WeatherApplication.View
             CitiesComboBox.DataSource = mainInfoPresenter.CityWeathers.Keys.ToList();
             CitiesComboBox.SelectedItem = city;
             NewCityTextBox.Text = "";
-            UpdateInfoAboutWeather();
+            UpdateInfoViewAboutWeather();
         }
 
         void AddCity()
@@ -52,28 +61,32 @@ namespace WeatherApplication.View
             catch(CityAlreadyIsInListException ex)
             {
                 CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.Select(c => c == NewCityTextBox.Text);
-                return;
+                
             }
             catch(CityNameIsNullOrWhiteSpaceException ex)
             {
-                MessageBox.Show("Something");
-                return;
+                
             }
             catch(CityNotFoundException ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
+                
             }
             catch(WebException ex)
             {
                 MessageBox.Show("There is no internet. Check internet connection");
-                return;
+               
             }
         }
 
         private void AddCityButton_Click(object sender, EventArgs e)
         {
             AddCity();
+        }
+
+        private void CitiesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateInfoViewAboutWeather();
         }
     }
 }
