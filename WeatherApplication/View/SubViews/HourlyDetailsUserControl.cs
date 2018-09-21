@@ -23,6 +23,7 @@ namespace WeatherApplication.View.SubViews
         {
             HourlyDetailsTableLayoutPanel.ColumnCount = 0;
             HourlyDetailsTableLayoutPanel.ColumnStyles.Clear();
+            HourlyDetailsTableLayoutPanel.Controls.Clear();
             HourlyItemUserControl hourlyItem;
             foreach (var weather in weathersOfDay)
             {

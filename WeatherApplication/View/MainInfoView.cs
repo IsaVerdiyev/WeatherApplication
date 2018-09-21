@@ -33,6 +33,7 @@ namespace WeatherApplication.View
             this.Dock = DockStyle.Fill;
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
             hourlyGraph = new GraphUserControl();
+            hourlyDetails = new HourlyDetailsUserControl();
             HourlyColumnTableLayoutPanel.Controls.Add(hourlyGraph);
         }
 
@@ -149,6 +150,29 @@ namespace WeatherApplication.View
         {
             selectedDate = mainInfoPresenter.CityWeathers[CitiesComboBox.SelectedItem as string].CurrentWeather.Date.Date;
             UpdateInfoViewAboutWeather();
+        }
+
+        private void SummaryButton_Click(object sender, EventArgs e)
+        {
+            if(HourlyColumnTableLayoutPanel.Controls[1] != hourlyGraph)
+            {
+                TurnToSelectedTypeOfHourlyColumnDisplay(hourlyGraph);
+            }
+        }
+
+        private void DetailsButton_Click(object sender, EventArgs e)
+        {
+            if (HourlyColumnTableLayoutPanel.Controls[1] != hourlyDetails)
+            {
+                TurnToSelectedTypeOfHourlyColumnDisplay(hourlyDetails);
+            }
+        }
+
+        void TurnToSelectedTypeOfHourlyColumnDisplay(UserControl control)
+        {
+            HourlyColumnTableLayoutPanel.Controls.RemoveAt(1);
+            HourlyColumnTableLayoutPanel.Controls.Add(control);
+            UpdateHourlyColumn();
         }
     }
 }

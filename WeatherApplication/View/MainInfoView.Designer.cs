@@ -50,12 +50,12 @@
             this.DailyWrapperTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.DailyWeatherInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.dailyItemUserControl5 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.HourlyColumnTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.HourlySettingsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
             this.SummaryButton = new System.Windows.Forms.Button();
             this.DetailsButton = new System.Windows.Forms.Button();
+            this.dailyItemUserControl5 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.MainTableLayoutPanel.SuspendLayout();
             this.CitySettingsTableLayoutPanel.SuspendLayout();
             this.WeatherInfoWrapperPanel.SuspendLayout();
@@ -366,14 +366,6 @@
             this.DailyWeatherInfoTableLayoutPanel.Size = new System.Drawing.Size(742, 150);
             this.DailyWeatherInfoTableLayoutPanel.TabIndex = 1;
             // 
-            // dailyItemUserControl5
-            // 
-            this.dailyItemUserControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl5.Location = new System.Drawing.Point(3, 3);
-            this.dailyItemUserControl5.Name = "dailyItemUserControl5";
-            this.dailyItemUserControl5.Size = new System.Drawing.Size(736, 144);
-            this.dailyItemUserControl5.TabIndex = 4;
-            // 
             // HourlyColumnTableLayoutPanel
             // 
             this.HourlyColumnTableLayoutPanel.ColumnCount = 1;
@@ -426,6 +418,7 @@
             this.SummaryButton.TabIndex = 1;
             this.SummaryButton.Text = "Summary";
             this.SummaryButton.UseVisualStyleBackColor = true;
+            this.SummaryButton.Click += new System.EventHandler(this.SummaryButton_Click);
             // 
             // DetailsButton
             // 
@@ -436,6 +429,15 @@
             this.DetailsButton.TabIndex = 2;
             this.DetailsButton.Text = "Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
+            this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
+            // 
+            // dailyItemUserControl5
+            // 
+            this.dailyItemUserControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dailyItemUserControl5.Location = new System.Drawing.Point(3, 3);
+            this.dailyItemUserControl5.Name = "dailyItemUserControl5";
+            this.dailyItemUserControl5.Size = new System.Drawing.Size(736, 144);
+            this.dailyItemUserControl5.TabIndex = 4;
             // 
             // MainInfoView
             // 
