@@ -93,6 +93,7 @@
     <Compile Include="View\SubViews\HourlyItemUserControl.Designer.cs">
       <DependentUpon>HourlyItemUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SubViews\IHourlyUpdate.cs" />
     <Compile Include="View\WeatherAppForm.cs">
       <SubType>Form</SubType>
     </Compile>

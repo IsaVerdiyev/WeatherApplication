@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApplication.Model
 {
-    class Weather
+    public class Weather
     {
         private DateTime date;
 

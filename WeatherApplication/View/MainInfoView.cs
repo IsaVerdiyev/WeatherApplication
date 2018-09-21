@@ -22,13 +22,14 @@ namespace WeatherApplication.View
     public partial class MainInfoView : UserControl, IMainInfoView
     {
         IMainInfoPresenter mainInfoPresenter;
+        GraphUserControl hourlyGraph;
         public MainInfoView()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
-            HourlyColumnTableLayoutPanel.Controls.Add(new GraphUserControl());
-
+            hourlyGraph = new GraphUserControl();
+            HourlyColumnTableLayoutPanel.Controls.Add(hourlyGraph);
         }
 
         public CancellationToken Cancelation { get; private set; }
@@ -46,6 +47,7 @@ namespace WeatherApplication.View
                 HumidityLabel.Text = $"Humidity {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Humidity} %";
                 WindLabel.Text = $"Wind {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.WindSpeed} m/s";
                 UpdateDailyWeatherColumn();
+                UpdateHourlyColumn(mainInfoPresenter.CityWeathers[CitiesComboBox.SelectedItem as string].CurrentWeather.Date.Date);
             }
         }
 
@@ -76,6 +78,13 @@ namespace WeatherApplication.View
                 DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
                 DailyWeatherInfoTableLayoutPanel.Controls.Add(dailyItemUserControl, i, 0);
             }
+        }
+
+        void UpdateHourlyColumn(DateTime date)
+        {
+            List<Weather> hourlyWeathersForSelectedDay = mainInfoPresenter.CityWeathers[CitiesComboBox.SelectedItem as string].ForecastListOfWeathers.Where(w => w.Date.Date == date.Date).ToList<Weather>();
+            ((IHourlyUpdate)HourlyColumnTableLayoutPanel.Controls[1]).UpdateHourly(hourlyWeathersForSelectedDay);
+
         }
 
         public void UpdateListOfCitites(string city)
