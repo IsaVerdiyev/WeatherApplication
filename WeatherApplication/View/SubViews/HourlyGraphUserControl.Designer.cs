@@ -1,6 +1,6 @@
 ﻿namespace WeatherApplication.View.SubViews
 {
-    partial class GraphUserControl
+    partial class HourlyGraphUserControl
     {
         /// <summary> 
         /// Required designer variable.

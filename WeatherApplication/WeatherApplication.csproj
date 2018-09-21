@@ -68,11 +68,11 @@
     <Compile Include="View\SubViews\DailyItemUserControl.Designer.cs">
       <DependentUpon>DailyItemUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SubViews\GraphUserControl.cs">
+    <Compile Include="View\SubViews\HourlyGraphUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\SubViews\GraphUserControl.Designer.cs">
-      <DependentUpon>GraphUserControl.cs</DependentUpon>
+    <Compile Include="View\SubViews\HourlyGraphUserControl.Designer.cs">
+      <DependentUpon>HourlyGraphUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SubViews\HourlyDetailsUserControl.cs">
       <SubType>UserControl</SubType>
@@ -112,8 +112,8 @@
     <EmbeddedResource Include="View\SubViews\DailyItemUserControl.resx">
       <DependentUpon>DailyItemUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\SubViews\GraphUserControl.resx">
-      <DependentUpon>GraphUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\SubViews\HourlyGraphUserControl.resx">
+      <DependentUpon>HourlyGraphUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SubViews\HourlyDetailsUserControl.resx">
       <DependentUpon>HourlyDetailsUserControl.cs</DependentUpon>

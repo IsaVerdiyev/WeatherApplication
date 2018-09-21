@@ -11,9 +11,9 @@ using WeatherApplication.Model;
 
 namespace WeatherApplication.View.SubViews
 {
-    public partial class GraphUserControl : UserControl, IHourlyUpdate
+    public partial class HourlyGraphUserControl : UserControl, IHourlyUpdate
     {
-        public GraphUserControl()
+        public HourlyGraphUserControl()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;

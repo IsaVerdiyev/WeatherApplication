@@ -55,7 +55,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.SummaryButton = new System.Windows.Forms.Button();
             this.DetailsButton = new System.Windows.Forms.Button();
-            this.dailyItemUserControl5 = new WeatherApplication.View.SubViews.DailyItemUserControl();
             this.MainTableLayoutPanel.SuspendLayout();
             this.CitySettingsTableLayoutPanel.SuspendLayout();
             this.WeatherInfoWrapperPanel.SuspendLayout();
@@ -65,7 +64,6 @@
             this.DegreeImageTableLayoutPanel.SuspendLayout();
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.SuspendLayout();
             this.DailyWrapperTableLayoutPanel.SuspendLayout();
-            this.DailyWeatherInfoTableLayoutPanel.SuspendLayout();
             this.HourlyColumnTableLayoutPanel.SuspendLayout();
             this.HourlySettingsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -357,7 +355,6 @@
             this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DailyWeatherInfoTableLayoutPanel.Controls.Add(this.dailyItemUserControl5, 0, 0);
             this.DailyWeatherInfoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DailyWeatherInfoTableLayoutPanel.Location = new System.Drawing.Point(3, 41);
             this.DailyWeatherInfoTableLayoutPanel.Name = "DailyWeatherInfoTableLayoutPanel";
@@ -431,14 +428,6 @@
             this.DetailsButton.UseVisualStyleBackColor = true;
             this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
             // 
-            // dailyItemUserControl5
-            // 
-            this.dailyItemUserControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dailyItemUserControl5.Location = new System.Drawing.Point(3, 3);
-            this.dailyItemUserControl5.Name = "dailyItemUserControl5";
-            this.dailyItemUserControl5.Size = new System.Drawing.Size(736, 144);
-            this.dailyItemUserControl5.TabIndex = 4;
-            // 
             // MainInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,7 +453,6 @@
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.PerformLayout();
             this.DailyWrapperTableLayoutPanel.ResumeLayout(false);
             this.DailyWrapperTableLayoutPanel.PerformLayout();
-            this.DailyWeatherInfoTableLayoutPanel.ResumeLayout(false);
             this.HourlyColumnTableLayoutPanel.ResumeLayout(false);
             this.HourlySettingsTableLayoutPanel.ResumeLayout(false);
             this.HourlySettingsTableLayoutPanel.PerformLayout();
@@ -500,7 +488,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button SummaryButton;
         private System.Windows.Forms.Button DetailsButton;
-        private SubViews.DailyItemUserControl dailyItemUserControl5;
         private System.Windows.Forms.TextBox NewCityTextBox;
     }
 }

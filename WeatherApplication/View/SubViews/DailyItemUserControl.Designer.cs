@@ -37,6 +37,7 @@
             // 
             // ItemTableLayoutPanel
             // 
+            this.ItemTableLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.ItemTableLayoutPanel.ColumnCount = 1;
             this.ItemTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ItemTableLayoutPanel.Controls.Add(this.DesciptionLabel, 0, 3);
@@ -52,33 +53,48 @@
             this.ItemTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.ItemTableLayoutPanel.Size = new System.Drawing.Size(150, 150);
             this.ItemTableLayoutPanel.TabIndex = 0;
+            this.ItemTableLayoutPanel.Click += new System.EventHandler(this.ItemClick);
+            this.ItemTableLayoutPanel.MouseEnter += new System.EventHandler(this.ItemMouseEnter);
+            this.ItemTableLayoutPanel.MouseLeave += new System.EventHandler(this.ItemMouseLeave);
             // 
             // DesciptionLabel
             // 
             this.DesciptionLabel.AutoSize = true;
+            this.DesciptionLabel.BackColor = System.Drawing.Color.Transparent;
             this.DesciptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DesciptionLabel.Location = new System.Drawing.Point(3, 129);
             this.DesciptionLabel.Name = "DesciptionLabel";
             this.DesciptionLabel.Size = new System.Drawing.Size(144, 21);
             this.DesciptionLabel.TabIndex = 3;
+            this.DesciptionLabel.Click += new System.EventHandler(this.ItemClick);
+            this.DesciptionLabel.MouseEnter += new System.EventHandler(this.ItemMouseEnter);
+            this.DesciptionLabel.MouseLeave += new System.EventHandler(this.ItemMouseLeave);
             // 
             // TemperatureLabel
             // 
             this.TemperatureLabel.AutoSize = true;
+            this.TemperatureLabel.BackColor = System.Drawing.Color.Transparent;
             this.TemperatureLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TemperatureLabel.Location = new System.Drawing.Point(3, 72);
             this.TemperatureLabel.Name = "TemperatureLabel";
             this.TemperatureLabel.Size = new System.Drawing.Size(144, 57);
             this.TemperatureLabel.TabIndex = 2;
+            this.TemperatureLabel.Click += new System.EventHandler(this.ItemClick);
+            this.TemperatureLabel.MouseEnter += new System.EventHandler(this.ItemMouseEnter);
+            this.TemperatureLabel.MouseLeave += new System.EventHandler(this.ItemMouseLeave);
             // 
             // DateLabel
             // 
             this.DateLabel.AutoSize = true;
+            this.DateLabel.BackColor = System.Drawing.Color.Transparent;
             this.DateLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DateLabel.Location = new System.Drawing.Point(3, 0);
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(144, 36);
             this.DateLabel.TabIndex = 0;
+            this.DateLabel.Click += new System.EventHandler(this.ItemClick);
+            this.DateLabel.MouseEnter += new System.EventHandler(this.ItemMouseEnter);
+            this.DateLabel.MouseLeave += new System.EventHandler(this.ItemMouseLeave);
             // 
             // DailyItemUserControl
             // 

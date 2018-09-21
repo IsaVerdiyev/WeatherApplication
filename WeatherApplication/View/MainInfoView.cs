@@ -22,7 +22,7 @@ namespace WeatherApplication.View
     public partial class MainInfoView : UserControl, IMainInfoView
     {
         IMainInfoPresenter mainInfoPresenter;
-        GraphUserControl hourlyGraph;
+        HourlyGraphUserControl hourlyGraph;
         HourlyDetailsUserControl hourlyDetails;
 
         DateTime selectedDate;
@@ -32,7 +32,7 @@ namespace WeatherApplication.View
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
-            hourlyGraph = new GraphUserControl();
+            hourlyGraph = new HourlyGraphUserControl();
             hourlyDetails = new HourlyDetailsUserControl();
             HourlyColumnTableLayoutPanel.Controls.Add(hourlyGraph);
         }
@@ -77,12 +77,21 @@ namespace WeatherApplication.View
             for (int i = 0; i < dailyWeathers.Count; i++)
             {
                 DailyItemUserControl dailyItemUserControl = new DailyItemUserControl();
-                dailyItemUserControl.DateLabel.Text = $"{dailyWeathers[i].Date.Day}, {dailyWeathers[i].Date.DayOfWeek.ToString()}";
+                dailyItemUserControl.DateOfDay = dailyWeathers[i].Date.Date;
+                dailyItemUserControl.DateLabel.Text = $"{dailyWeathers[i].Date.Day}, {dailyItemUserControl.DateOfDay.DayOfWeek.ToString()}";
                 dailyItemUserControl.TemperatureLabel.Text = $"{dailyWeathers[i].MaxTemperature}   {dailyWeathers[i].MinTemperature}";
+                dailyItemUserControl.WasClicked += UpdateDate;
+
                 DailyWeatherInfoTableLayoutPanel.ColumnCount++;
                 DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
                 DailyWeatherInfoTableLayoutPanel.Controls.Add(dailyItemUserControl, i, 0);
             }
+        }
+
+        void UpdateDate(DateTime date)
+        {
+            selectedDate = date;
+            UpdateHourlyColumn();
         }
 
         void UpdateHourlyColumn()
