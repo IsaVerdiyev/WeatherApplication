@@ -55,6 +55,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.SummaryButton = new System.Windows.Forms.Button();
             this.DetailsButton = new System.Windows.Forms.Button();
+            this.IconPictureBox = new System.Windows.Forms.PictureBox();
             this.MainTableLayoutPanel.SuspendLayout();
             this.CitySettingsTableLayoutPanel.SuspendLayout();
             this.WeatherInfoWrapperPanel.SuspendLayout();
@@ -66,6 +67,7 @@
             this.DailyWrapperTableLayoutPanel.SuspendLayout();
             this.HourlyColumnTableLayoutPanel.SuspendLayout();
             this.HourlySettingsTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IconPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTableLayoutPanel
@@ -80,7 +82,7 @@
             this.MainTableLayoutPanel.RowCount = 2;
             this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MainTableLayoutPanel.Size = new System.Drawing.Size(760, 802);
+            this.MainTableLayoutPanel.Size = new System.Drawing.Size(760, 593);
             this.MainTableLayoutPanel.TabIndex = 0;
             // 
             // CitySettingsTableLayoutPanel
@@ -145,11 +147,12 @@
             // 
             // WeatherInfoWrapperPanel
             // 
+            this.WeatherInfoWrapperPanel.AutoScroll = true;
             this.WeatherInfoWrapperPanel.Controls.Add(this.WeatherInfoTableLayoutPanel);
             this.WeatherInfoWrapperPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WeatherInfoWrapperPanel.Location = new System.Drawing.Point(3, 38);
             this.WeatherInfoWrapperPanel.Name = "WeatherInfoWrapperPanel";
-            this.WeatherInfoWrapperPanel.Size = new System.Drawing.Size(754, 761);
+            this.WeatherInfoWrapperPanel.Size = new System.Drawing.Size(754, 552);
             this.WeatherInfoWrapperPanel.TabIndex = 1;
             // 
             // WeatherInfoTableLayoutPanel
@@ -164,11 +167,12 @@
             this.WeatherInfoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.WeatherInfoTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.WeatherInfoTableLayoutPanel.Name = "WeatherInfoTableLayoutPanel";
-            this.WeatherInfoTableLayoutPanel.RowCount = 3;
+            this.WeatherInfoTableLayoutPanel.RowCount = 4;
+            this.WeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.WeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.WeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.WeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.WeatherInfoTableLayoutPanel.Size = new System.Drawing.Size(754, 600);
+            this.WeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.WeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.WeatherInfoTableLayoutPanel.Size = new System.Drawing.Size(737, 900);
             this.WeatherInfoTableLayoutPanel.TabIndex = 0;
             // 
             // CurrentTemperatureTableLayoutPanelWrapper
@@ -185,7 +189,7 @@
             this.CurrentTemperatureTableLayoutPanelWrapper.Name = "CurrentTemperatureTableLayoutPanelWrapper";
             this.CurrentTemperatureTableLayoutPanelWrapper.RowCount = 1;
             this.CurrentTemperatureTableLayoutPanelWrapper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CurrentTemperatureTableLayoutPanelWrapper.Size = new System.Drawing.Size(748, 194);
+            this.CurrentTemperatureTableLayoutPanelWrapper.Size = new System.Drawing.Size(731, 294);
             this.CurrentTemperatureTableLayoutPanelWrapper.TabIndex = 0;
             // 
             // CurrentTemperatureTableLayoutPanel
@@ -200,51 +204,53 @@
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.LastUpdateTimeLabel, 0, 3);
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.CurrentTemperatureAdditionalInfoTableLayoutPanel, 0, 4);
             this.CurrentTemperatureTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CurrentTemperatureTableLayoutPanel.Location = new System.Drawing.Point(290, 3);
+            this.CurrentTemperatureTableLayoutPanel.Location = new System.Drawing.Point(206, 3);
             this.CurrentTemperatureTableLayoutPanel.Name = "CurrentTemperatureTableLayoutPanel";
             this.CurrentTemperatureTableLayoutPanel.RowCount = 5;
             this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.CurrentTemperatureTableLayoutPanel.Size = new System.Drawing.Size(168, 188);
+            this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.CurrentTemperatureTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.CurrentTemperatureTableLayoutPanel.Size = new System.Drawing.Size(318, 288);
             this.CurrentTemperatureTableLayoutPanel.TabIndex = 0;
             // 
             // CityNameLabel
             // 
             this.CityNameLabel.AutoSize = true;
             this.CityNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CityNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CityNameLabel.Location = new System.Drawing.Point(3, 0);
             this.CityNameLabel.Name = "CityNameLabel";
-            this.CityNameLabel.Size = new System.Drawing.Size(162, 37);
+            this.CityNameLabel.Size = new System.Drawing.Size(312, 57);
             this.CityNameLabel.TabIndex = 0;
             this.CityNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DegreeImageTableLayoutPanel
             // 
-            this.DegreeImageTableLayoutPanel.AutoSize = true;
             this.DegreeImageTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.DegreeImageTableLayoutPanel.ColumnCount = 3;
-            this.DegreeImageTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.DegreeImageTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.DegreeImageTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.DegreeImageTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.DegreeImageTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.DegreeImageTableLayoutPanel.Controls.Add(this.DegreeLabel, 1, 0);
+            this.DegreeImageTableLayoutPanel.Controls.Add(this.IconPictureBox, 0, 0);
             this.DegreeImageTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DegreeImageTableLayoutPanel.Location = new System.Drawing.Point(3, 40);
+            this.DegreeImageTableLayoutPanel.Location = new System.Drawing.Point(3, 60);
             this.DegreeImageTableLayoutPanel.Name = "DegreeImageTableLayoutPanel";
             this.DegreeImageTableLayoutPanel.RowCount = 1;
             this.DegreeImageTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.DegreeImageTableLayoutPanel.Size = new System.Drawing.Size(162, 69);
+            this.DegreeImageTableLayoutPanel.Size = new System.Drawing.Size(312, 109);
             this.DegreeImageTableLayoutPanel.TabIndex = 1;
             // 
             // DegreeLabel
             // 
             this.DegreeLabel.AutoSize = true;
             this.DegreeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DegreeLabel.Location = new System.Drawing.Point(43, 0);
+            this.DegreeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DegreeLabel.Location = new System.Drawing.Point(156, 0);
             this.DegreeLabel.Name = "DegreeLabel";
-            this.DegreeLabel.Size = new System.Drawing.Size(75, 69);
+            this.DegreeLabel.Size = new System.Drawing.Size(1, 109);
             this.DegreeLabel.TabIndex = 0;
             this.DegreeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -252,9 +258,10 @@
             // 
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DescriptionLabel.Location = new System.Drawing.Point(3, 112);
+            this.DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DescriptionLabel.Location = new System.Drawing.Point(3, 172);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(162, 37);
+            this.DescriptionLabel.Size = new System.Drawing.Size(312, 57);
             this.DescriptionLabel.TabIndex = 2;
             this.DescriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -262,9 +269,10 @@
             // 
             this.LastUpdateTimeLabel.AutoSize = true;
             this.LastUpdateTimeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LastUpdateTimeLabel.Location = new System.Drawing.Point(3, 149);
+            this.LastUpdateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastUpdateTimeLabel.Location = new System.Drawing.Point(3, 229);
             this.LastUpdateTimeLabel.Name = "LastUpdateTimeLabel";
-            this.LastUpdateTimeLabel.Size = new System.Drawing.Size(162, 18);
+            this.LastUpdateTimeLabel.Size = new System.Drawing.Size(312, 28);
             this.LastUpdateTimeLabel.TabIndex = 3;
             this.LastUpdateTimeLabel.Text = "Last updated at ";
             this.LastUpdateTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -280,20 +288,21 @@
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Controls.Add(this.PressureLabel, 0, 0);
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Controls.Add(this.HumidityLabel, 1, 0);
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Controls.Add(this.WindLabel, 2, 0);
-            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Location = new System.Drawing.Point(3, 170);
+            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Location = new System.Drawing.Point(3, 260);
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Name = "CurrentTemperatureAdditionalInfoTableLayoutPanel";
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.RowCount = 1;
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Size = new System.Drawing.Size(162, 13);
+            this.CurrentTemperatureAdditionalInfoTableLayoutPanel.Size = new System.Drawing.Size(312, 25);
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel.TabIndex = 4;
             // 
             // PressureLabel
             // 
             this.PressureLabel.AutoSize = true;
             this.PressureLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PressureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PressureLabel.Location = new System.Drawing.Point(3, 0);
             this.PressureLabel.Name = "PressureLabel";
-            this.PressureLabel.Size = new System.Drawing.Size(48, 13);
+            this.PressureLabel.Size = new System.Drawing.Size(98, 25);
             this.PressureLabel.TabIndex = 0;
             this.PressureLabel.Text = "Pressure";
             // 
@@ -301,9 +310,10 @@
             // 
             this.HumidityLabel.AutoSize = true;
             this.HumidityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HumidityLabel.Location = new System.Drawing.Point(57, 0);
+            this.HumidityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HumidityLabel.Location = new System.Drawing.Point(107, 0);
             this.HumidityLabel.Name = "HumidityLabel";
-            this.HumidityLabel.Size = new System.Drawing.Size(48, 13);
+            this.HumidityLabel.Size = new System.Drawing.Size(98, 25);
             this.HumidityLabel.TabIndex = 1;
             this.HumidityLabel.Text = "Humidity";
             this.HumidityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -312,9 +322,10 @@
             // 
             this.WindLabel.AutoSize = true;
             this.WindLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WindLabel.Location = new System.Drawing.Point(111, 0);
+            this.WindLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WindLabel.Location = new System.Drawing.Point(211, 0);
             this.WindLabel.Name = "WindLabel";
-            this.WindLabel.Size = new System.Drawing.Size(48, 13);
+            this.WindLabel.Size = new System.Drawing.Size(98, 25);
             this.WindLabel.TabIndex = 2;
             this.WindLabel.Text = "Wind ";
             this.WindLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -326,12 +337,12 @@
             this.DailyWrapperTableLayoutPanel.Controls.Add(this.label1, 0, 0);
             this.DailyWrapperTableLayoutPanel.Controls.Add(this.DailyWeatherInfoTableLayoutPanel, 0, 1);
             this.DailyWrapperTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DailyWrapperTableLayoutPanel.Location = new System.Drawing.Point(3, 203);
+            this.DailyWrapperTableLayoutPanel.Location = new System.Drawing.Point(3, 303);
             this.DailyWrapperTableLayoutPanel.Name = "DailyWrapperTableLayoutPanel";
             this.DailyWrapperTableLayoutPanel.RowCount = 2;
             this.DailyWrapperTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.DailyWrapperTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.DailyWrapperTableLayoutPanel.Size = new System.Drawing.Size(748, 194);
+            this.DailyWrapperTableLayoutPanel.Size = new System.Drawing.Size(731, 194);
             this.DailyWrapperTableLayoutPanel.TabIndex = 1;
             // 
             // label1
@@ -339,10 +350,10 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 38);
+            this.label1.Size = new System.Drawing.Size(75, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Daily";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -360,7 +371,7 @@
             this.DailyWeatherInfoTableLayoutPanel.Name = "DailyWeatherInfoTableLayoutPanel";
             this.DailyWeatherInfoTableLayoutPanel.RowCount = 1;
             this.DailyWeatherInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.DailyWeatherInfoTableLayoutPanel.Size = new System.Drawing.Size(742, 150);
+            this.DailyWeatherInfoTableLayoutPanel.Size = new System.Drawing.Size(725, 150);
             this.DailyWeatherInfoTableLayoutPanel.TabIndex = 1;
             // 
             // HourlyColumnTableLayoutPanel
@@ -369,12 +380,12 @@
             this.HourlyColumnTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.HourlyColumnTableLayoutPanel.Controls.Add(this.HourlySettingsTableLayoutPanel, 0, 0);
             this.HourlyColumnTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HourlyColumnTableLayoutPanel.Location = new System.Drawing.Point(3, 403);
+            this.HourlyColumnTableLayoutPanel.Location = new System.Drawing.Point(3, 503);
             this.HourlyColumnTableLayoutPanel.Name = "HourlyColumnTableLayoutPanel";
             this.HourlyColumnTableLayoutPanel.RowCount = 2;
             this.HourlyColumnTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.HourlyColumnTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.HourlyColumnTableLayoutPanel.Size = new System.Drawing.Size(748, 194);
+            this.HourlyColumnTableLayoutPanel.Size = new System.Drawing.Size(731, 294);
             this.HourlyColumnTableLayoutPanel.TabIndex = 2;
             // 
             // HourlySettingsTableLayoutPanel
@@ -392,26 +403,26 @@
             this.HourlySettingsTableLayoutPanel.Name = "HourlySettingsTableLayoutPanel";
             this.HourlySettingsTableLayoutPanel.RowCount = 1;
             this.HourlySettingsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.HourlySettingsTableLayoutPanel.Size = new System.Drawing.Size(742, 32);
+            this.HourlySettingsTableLayoutPanel.Size = new System.Drawing.Size(725, 52);
             this.HourlySettingsTableLayoutPanel.TabIndex = 0;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label14.Location = new System.Drawing.Point(3, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 32);
+            this.label14.Size = new System.Drawing.Size(93, 52);
             this.label14.TabIndex = 0;
             this.label14.Text = "Hourly";
             // 
             // SummaryButton
             // 
             this.SummaryButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SummaryButton.Location = new System.Drawing.Point(583, 3);
+            this.SummaryButton.Location = new System.Drawing.Point(566, 3);
             this.SummaryButton.Name = "SummaryButton";
-            this.SummaryButton.Size = new System.Drawing.Size(75, 26);
+            this.SummaryButton.Size = new System.Drawing.Size(75, 46);
             this.SummaryButton.TabIndex = 1;
             this.SummaryButton.Text = "Summary";
             this.SummaryButton.UseVisualStyleBackColor = true;
@@ -420,13 +431,24 @@
             // DetailsButton
             // 
             this.DetailsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DetailsButton.Location = new System.Drawing.Point(664, 3);
+            this.DetailsButton.Location = new System.Drawing.Point(647, 3);
             this.DetailsButton.Name = "DetailsButton";
-            this.DetailsButton.Size = new System.Drawing.Size(75, 26);
+            this.DetailsButton.Size = new System.Drawing.Size(75, 46);
             this.DetailsButton.TabIndex = 2;
             this.DetailsButton.Text = "Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
             this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
+            // 
+            // IconPictureBox
+            // 
+            this.IconPictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.IconPictureBox.Location = new System.Drawing.Point(48, 0);
+            this.IconPictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.IconPictureBox.Name = "IconPictureBox";
+            this.IconPictureBox.Size = new System.Drawing.Size(105, 109);
+            this.IconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.IconPictureBox.TabIndex = 1;
+            this.IconPictureBox.TabStop = false;
             // 
             // MainInfoView
             // 
@@ -434,7 +456,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MainTableLayoutPanel);
             this.Name = "MainInfoView";
-            this.Size = new System.Drawing.Size(760, 802);
+            this.Size = new System.Drawing.Size(760, 593);
             this.MainTableLayoutPanel.ResumeLayout(false);
             this.MainTableLayoutPanel.PerformLayout();
             this.CitySettingsTableLayoutPanel.ResumeLayout(false);
@@ -456,6 +478,7 @@
             this.HourlyColumnTableLayoutPanel.ResumeLayout(false);
             this.HourlySettingsTableLayoutPanel.ResumeLayout(false);
             this.HourlySettingsTableLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IconPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -489,5 +512,6 @@
         private System.Windows.Forms.Button SummaryButton;
         private System.Windows.Forms.Button DetailsButton;
         private System.Windows.Forms.TextBox NewCityTextBox;
+        private System.Windows.Forms.PictureBox IconPictureBox;
     }
 }

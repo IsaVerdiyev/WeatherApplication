@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeatherApplication.Model;
+using System.Globalization;
 
 namespace WeatherApplication.View.SubViews
 {
@@ -28,9 +29,12 @@ namespace WeatherApplication.View.SubViews
             foreach (var weather in weathersOfDay)
             {
                 hourlyItem = new HourlyItemUserControl();
+                hourlyItem.IconPictureBox.Load(weather.IconPath);
                 hourlyItem.TemperatureLabel.Text = $"{weather.Temperature.ToString()} °C";
                 hourlyItem.DescriptionLabel.Text = weather.Description.ToString();
-                hourlyItem.WindLabel.Text = $"{weather.WindSpeed.ToString()} m/s";
+                hourlyItem.HumidityLabel.Text = $"Humidity {weather.Humidity} %";
+                hourlyItem.WindLabel.Text = $"💨 {weather.WindSpeed} m/s";
+                hourlyItem.HourLabel.Text = weather.Date.ToString("hh tt", CultureInfo.InvariantCulture);
 
                 HourlyDetailsTableLayoutPanel.ColumnCount++;
                 HourlyDetailsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));

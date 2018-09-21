@@ -17,7 +17,7 @@ namespace WeatherApplication.Services.WeatherInfoGetter
         string firstPartOfRequestCurrent = "http://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
         string firstPartOfRequestForecast = "http://api.openweathermap.org/data/2.5/forecast?&units=metric&q=";
         string secondPartOfRequest = "&APPID=";
-
+        string IconPathFirstPart = "http://openweathermap.org/img/w/";
         string apiKey;
 
         public OpenWeatherMapWeatherInfoGetter(string apiKey)
@@ -120,7 +120,7 @@ namespace WeatherApplication.Services.WeatherInfoGetter
                     Humidity = w.SelectToken("main.humidity").Value<double>(),
                     WindSpeed = w.SelectToken("wind.speed").Value<double>(),
                     Description = w.SelectToken("weather[0].description").Value<string>(),
-                    IconPath = w.SelectToken("weather[0].icon").Value<string>()
+                    IconPath = $"{IconPathFirstPart}{w.SelectToken("weather[0].icon").Value<string>()}.png"
                 }).ToList<Weather>();
             return list;
         }
@@ -144,7 +144,7 @@ namespace WeatherApplication.Services.WeatherInfoGetter
                 Humidity = jObj["main"]["humidity"].Value<double>(),
                 Pressure = jObj["main"]["pressure"].Value<double>(),
                 WindSpeed = jObj["wind"]["speed"].Value<double>(),
-                IconPath = jObj["weather"][0]["icon"].Value<string>()
+                IconPath = $"{IconPathFirstPart}{jObj["weather"][0]["icon"].Value<string>()}.png"
             };
             return currentWeather;
         }

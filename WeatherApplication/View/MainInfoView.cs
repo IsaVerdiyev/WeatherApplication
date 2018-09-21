@@ -46,6 +46,7 @@ namespace WeatherApplication.View
             {
                 CityNameLabel.Text = CitiesComboBox.SelectedItem as string;
                 DegreeLabel.Text = mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Temperature.ToString() + "°C";
+                IconPictureBox.Load(mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.IconPath);
                 DescriptionLabel.Text = mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Description;
                 LastUpdateTimeLabel.Text = $"Last update time {mainInfoPresenter.CityWeathers[selectedCity].LastUpdateTime.ToShortTimeString()}";
                 PressureLabel.Text = $"Pressure {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Pressure} hPa";
@@ -78,8 +79,9 @@ namespace WeatherApplication.View
             {
                 DailyItemUserControl dailyItemUserControl = new DailyItemUserControl();
                 dailyItemUserControl.DateOfDay = dailyWeathers[i].Date.Date;
-                dailyItemUserControl.DateLabel.Text = $"{dailyWeathers[i].Date.Day}, {dailyItemUserControl.DateOfDay.DayOfWeek.ToString()}";
-                dailyItemUserControl.TemperatureLabel.Text = $"{dailyWeathers[i].MaxTemperature}   {dailyWeathers[i].MinTemperature}";
+                dailyItemUserControl.DateLabel.Text = $"{dailyWeathers[i].Date.Day}, {dailyItemUserControl.DateOfDay.DayOfWeek.ToString().Substring(0, 3)}";
+                dailyItemUserControl.MaxTemperatureLabel.Text = dailyWeathers[i].MaxTemperature.ToString();
+                dailyItemUserControl.MinTemperatureLabel.Text = dailyWeathers[i].MinTemperature.ToString();
                 dailyItemUserControl.WasClicked += UpdateDate;
 
                 DailyWeatherInfoTableLayoutPanel.ColumnCount++;
