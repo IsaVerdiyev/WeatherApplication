@@ -112,9 +112,9 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel ItemTableLayoutPanel;
-        private System.Windows.Forms.Label TemperatureLabel;
-        private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Label HumidityLabel;
-        private System.Windows.Forms.Label WindLabel;
+        public System.Windows.Forms.Label TemperatureLabel;
+        public System.Windows.Forms.Label DescriptionLabel;
+        public System.Windows.Forms.Label WindLabel;
     }
 }
