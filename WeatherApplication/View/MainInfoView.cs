@@ -23,6 +23,10 @@ namespace WeatherApplication.View
     {
         IMainInfoPresenter mainInfoPresenter;
         GraphUserControl hourlyGraph;
+        HourlyDetailsUserControl hourlyDetails;
+
+        DateTime selectedDate;
+
         public MainInfoView()
         {
             InitializeComponent();
@@ -47,7 +51,7 @@ namespace WeatherApplication.View
                 HumidityLabel.Text = $"Humidity {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Humidity} %";
                 WindLabel.Text = $"Wind {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.WindSpeed} m/s";
                 UpdateDailyWeatherColumn();
-                UpdateHourlyColumn(mainInfoPresenter.CityWeathers[CitiesComboBox.SelectedItem as string].CurrentWeather.Date.Date);
+                UpdateHourlyColumn();
             }
         }
 
@@ -80,9 +84,9 @@ namespace WeatherApplication.View
             }
         }
 
-        void UpdateHourlyColumn(DateTime date)
+        void UpdateHourlyColumn()
         {
-            List<Weather> hourlyWeathersForSelectedDay = mainInfoPresenter.CityWeathers[CitiesComboBox.SelectedItem as string].ForecastListOfWeathers.Where(w => w.Date.Date == date.Date).ToList<Weather>();
+            List<Weather> hourlyWeathersForSelectedDay = mainInfoPresenter.CityWeathers[CitiesComboBox.SelectedItem as string].ForecastListOfWeathers.Where(w => w.Date.Date == selectedDate).ToList<Weather>();
             ((IHourlyUpdate)HourlyColumnTableLayoutPanel.Controls[1]).UpdateHourly(hourlyWeathersForSelectedDay);
 
         }
@@ -92,7 +96,7 @@ namespace WeatherApplication.View
             CitiesComboBox.DataSource = mainInfoPresenter.CityWeathers.Keys.ToList();
             CitiesComboBox.SelectedItem = city;
             NewCityTextBox.Text = "";
-            UpdateInfoViewAboutWeather();
+            
         }
 
         void AddCity()
@@ -143,6 +147,7 @@ namespace WeatherApplication.View
 
         private void CitiesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            selectedDate = mainInfoPresenter.CityWeathers[CitiesComboBox.SelectedItem as string].CurrentWeather.Date.Date;
             UpdateInfoViewAboutWeather();
         }
     }
