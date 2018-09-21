@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -50,9 +51,29 @@ namespace WeatherApplication.Services.WeatherInfoGetter
 
         string GetCurrentWeatherResponseFromWeatherOpenMap(string city)
         {
-            using(WebClient client = new WebClient())
-            {
+            WebClient client = new WebClient();
+            try
+            {   
                 return client.DownloadString($"{ firstPartOfRequestCurrent}{ city}{secondPartOfRequest}{apiKey}");
+                
+            }
+            catch (WebException ex)
+            {
+                if(ex.Response != null)
+                {
+                    using(StreamReader reader = new StreamReader(ex.Response.GetResponseStream()))
+                    {
+                        return reader.ReadToEnd();
+                    }
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            finally
+            {
+                client.Dispose();
             }
         }
 
@@ -107,6 +128,11 @@ namespace WeatherApplication.Services.WeatherInfoGetter
         Weather ParseJsonCurrentWeatherResponseIntoWeather(string jsonResponse)
         {
             JObject jObj = JObject.Parse(jsonResponse);
+
+            if (jObj["cod"].Value<string>() == "404" && jObj["message"].Value<string>() == "city not found")
+            {
+                throw new CityNotFoundException();
+            }
 
             Weather currentWeather = new Weather
             {
