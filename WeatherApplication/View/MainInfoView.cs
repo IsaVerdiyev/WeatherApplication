@@ -64,22 +64,17 @@ namespace WeatherApplication.View
                                  }).ToList<Weather>();
 
             DailyWeatherInfoTableLayoutPanel.Controls.Clear();
-            DailyWrapperTableLayoutPanel.ColumnCount = 0;
-            List<DailyItemUserControl> dailyItemUserControls = new List<DailyItemUserControl>();
+            DailyWeatherInfoTableLayoutPanel.ColumnCount = 0;
+            DailyWeatherInfoTableLayoutPanel.ColumnStyles.Clear();
+            
             for (int i = 0; i < dailyWeathers.Count; i++)
             {
                 DailyItemUserControl dailyItemUserControl = new DailyItemUserControl();
                 dailyItemUserControl.DateLabel.Text = $"{dailyWeathers[i].Date.Day}, {dailyWeathers[i].Date.DayOfWeek.ToString()}";
                 dailyItemUserControl.TemperatureLabel.Text = $"{dailyWeathers[i].MaxTemperature}   {dailyWeathers[i].MinTemperature}";
-                dailyItemUserControls.Add(dailyItemUserControl);
-            }
-            DailyWeatherInfoTableLayoutPanel.ColumnCount = dailyItemUserControls.Count;
-            foreach (var item in dailyItemUserControls)
-            {
+                DailyWeatherInfoTableLayoutPanel.ColumnCount++;
                 DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            }
-            for (int i = 0; i < dailyItemUserControls.Count; i++) {
-                DailyWeatherInfoTableLayoutPanel.Controls.Add(dailyItemUserControls[i], i, 0);
+                DailyWeatherInfoTableLayoutPanel.Controls.Add(dailyItemUserControl, i, 0);
             }
         }
 
@@ -109,7 +104,7 @@ namespace WeatherApplication.View
                }
                catch (CityNotFoundException ex)
                {
-                   MessageBox.Show(ex.Message);
+                   MessageBox.Show("City wasn't found");
                }
                catch (WebException ex)
                {
