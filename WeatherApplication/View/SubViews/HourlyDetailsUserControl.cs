@@ -37,7 +37,7 @@ namespace WeatherApplication.View.SubViews
                 hourlyItem.HourLabel.Text = weather.Date.ToString("hh tt", CultureInfo.InvariantCulture);
 
                 HourlyDetailsTableLayoutPanel.ColumnCount++;
-                HourlyDetailsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+                HourlyDetailsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
                 HourlyDetailsTableLayoutPanel.Controls.Add(hourlyItem);
             }
         }
