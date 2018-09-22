@@ -75,11 +75,16 @@
             // 
             // TemperatureTableLayoutPanel
             // 
-            this.TemperatureTableLayoutPanel.ColumnCount = 2;
-            this.TemperatureTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TemperatureTableLayoutPanel.AutoSize = true;
+            this.TemperatureTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TemperatureTableLayoutPanel.ColumnCount = 4;
+            this.TemperatureTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TemperatureTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.TemperatureTableLayoutPanel.Controls.Add(this.MinTemperatureLabel, 0, 0);
-            this.TemperatureTableLayoutPanel.Controls.Add(this.MaxTemperatureLabel, 0, 0);
+            this.TemperatureTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.TemperatureTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TemperatureTableLayoutPanel.Controls.Add(this.MinTemperatureLabel, 1, 0);
+            this.TemperatureTableLayoutPanel.Controls.Add(this.MaxTemperatureLabel, 1, 0);
+            this.TemperatureTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TemperatureTableLayoutPanel.Location = new System.Drawing.Point(3, 78);
             this.TemperatureTableLayoutPanel.Name = "TemperatureTableLayoutPanel";
             this.TemperatureTableLayoutPanel.RowCount = 1;
@@ -97,7 +102,7 @@
             this.MinTemperatureLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MinTemperatureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinTemperatureLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.MinTemperatureLabel.Location = new System.Drawing.Point(141, 0);
+            this.MinTemperatureLabel.Location = new System.Drawing.Point(75, 0);
             this.MinTemperatureLabel.Name = "MinTemperatureLabel";
             this.MinTemperatureLabel.Size = new System.Drawing.Size(1, 69);
             this.MinTemperatureLabel.TabIndex = 4;
@@ -112,9 +117,9 @@
             this.MaxTemperatureLabel.BackColor = System.Drawing.Color.Transparent;
             this.MaxTemperatureLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MaxTemperatureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaxTemperatureLabel.Location = new System.Drawing.Point(3, 0);
+            this.MaxTemperatureLabel.Location = new System.Drawing.Point(69, 0);
             this.MaxTemperatureLabel.Name = "MaxTemperatureLabel";
-            this.MaxTemperatureLabel.Size = new System.Drawing.Size(132, 69);
+            this.MaxTemperatureLabel.Size = new System.Drawing.Size(1, 69);
             this.MaxTemperatureLabel.TabIndex = 3;
             this.MaxTemperatureLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.MaxTemperatureLabel.Click += new System.EventHandler(this.ItemClick);

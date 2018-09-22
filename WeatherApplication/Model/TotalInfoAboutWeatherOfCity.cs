@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApplication.Model
 {
-    class TotalInfoAboutWeatherOfCity
+    public class TotalInfoAboutWeatherOfCity
     {
         private Weather currentWeather;
 

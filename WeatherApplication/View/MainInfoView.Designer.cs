@@ -30,7 +30,6 @@
         {
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CitySettingsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.RemoveCityButton = new System.Windows.Forms.Button();
             this.AddCityButton = new System.Windows.Forms.Button();
             this.CitiesComboBox = new System.Windows.Forms.ComboBox();
             this.NewCityTextBox = new System.Windows.Forms.TextBox();
@@ -56,6 +55,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.SummaryButton = new System.Windows.Forms.Button();
             this.DetailsButton = new System.Windows.Forms.Button();
+            this.RemoveCityButton = new System.Windows.Forms.Button();
             this.MainTableLayoutPanel.SuspendLayout();
             this.CitySettingsTableLayoutPanel.SuspendLayout();
             this.WeatherInfoWrapperPanel.SuspendLayout();
@@ -106,16 +106,6 @@
             this.CitySettingsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.CitySettingsTableLayoutPanel.Size = new System.Drawing.Size(754, 29);
             this.CitySettingsTableLayoutPanel.TabIndex = 0;
-            // 
-            // RemoveCityButton
-            // 
-            this.RemoveCityButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RemoveCityButton.Location = new System.Drawing.Point(657, 3);
-            this.RemoveCityButton.Name = "RemoveCityButton";
-            this.RemoveCityButton.Size = new System.Drawing.Size(94, 23);
-            this.RemoveCityButton.TabIndex = 0;
-            this.RemoveCityButton.Text = "Remove city";
-            this.RemoveCityButton.UseVisualStyleBackColor = true;
             // 
             // AddCityButton
             // 
@@ -450,6 +440,17 @@
             this.DetailsButton.UseVisualStyleBackColor = true;
             this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
             // 
+            // RemoveCityButton
+            // 
+            this.RemoveCityButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RemoveCityButton.Location = new System.Drawing.Point(657, 3);
+            this.RemoveCityButton.Name = "RemoveCityButton";
+            this.RemoveCityButton.Size = new System.Drawing.Size(94, 23);
+            this.RemoveCityButton.TabIndex = 0;
+            this.RemoveCityButton.Text = "Remove city...";
+            this.RemoveCityButton.UseVisualStyleBackColor = true;
+            this.RemoveCityButton.Click += new System.EventHandler(this.RemoveCityButton_Click);
+            // 
             // MainInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,7 +488,6 @@
 
         private System.Windows.Forms.TableLayoutPanel MainTableLayoutPanel;
         private System.Windows.Forms.TableLayoutPanel CitySettingsTableLayoutPanel;
-        private System.Windows.Forms.Button RemoveCityButton;
         private System.Windows.Forms.Button AddCityButton;
         private System.Windows.Forms.ComboBox CitiesComboBox;
         private System.Windows.Forms.Panel WeatherInfoWrapperPanel;
@@ -513,5 +513,6 @@
         private System.Windows.Forms.Button DetailsButton;
         private System.Windows.Forms.TextBox NewCityTextBox;
         private System.Windows.Forms.PictureBox IconPictureBox;
+        private System.Windows.Forms.Button RemoveCityButton;
     }
 }

@@ -116,8 +116,20 @@ namespace WeatherApplication.View
 
         public void UpdateListOfCitites(string city)
         {
+            string previousSelectedCity = CitiesComboBox.SelectedItem as string;
             CitiesComboBox.DataSource = mainInfoPresenter.CityWeathers.Keys.ToList();
-            CitiesComboBox.SelectedItem = city;
+            if (mainInfoPresenter.CityWeathers.Keys.Contains(city))
+            {
+                CitiesComboBox.SelectedItem = city;
+            }
+            else if (mainInfoPresenter.CityWeathers.Keys.Contains(previousSelectedCity))
+            {
+                CitiesComboBox.SelectedItem = previousSelectedCity;
+            }
+            else
+            {
+                CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.FirstOrDefault();
+            }
             NewCityTextBox.Text = "";
             
         }
@@ -195,6 +207,12 @@ namespace WeatherApplication.View
             HourlyColumnTableLayoutPanel.Controls.RemoveAt(1);
             HourlyColumnTableLayoutPanel.Controls.Add(control);
             UpdateHourlyColumn();
+        }
+
+        private void RemoveCityButton_Click(object sender, EventArgs e)
+        {
+            var removeWindow = new RemoveView(mainInfoPresenter);
+            removeWindow.ShowDialog();
         }
     }
 }

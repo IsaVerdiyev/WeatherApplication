@@ -7,7 +7,7 @@ using WeatherApplication.Model;
 
 namespace WeatherApplication.Presenter
 {
-    interface IMainInfoPresenter
+    public interface IMainInfoPresenter
     {
         Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get; set; }
         Task AddCity(string city);
