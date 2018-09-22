@@ -12,9 +12,26 @@ namespace WeatherApplication.View.SubViews
 {
     public partial class DailyItemUserControl : UserControl
     {
-        public event Action<DateTime> WasClicked;
+        public event Action<object, DateTime> WasClicked;
 
         DateTime dateOfDay;
+        bool selected;
+
+        public bool Selected {
+            get => selected;
+            set
+            {
+                selected = value;
+                if (MouseIsOverItem())
+                {
+                    ItemMouseEnter(this, null);
+                }
+                else
+                {
+                    ItemMouseLeave(this, null);
+                }
+            }
+        }
 
         public DateTime DateOfDay { get => dateOfDay; set => dateOfDay = value; }
 
@@ -27,18 +44,43 @@ namespace WeatherApplication.View.SubViews
 
         private void ItemMouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = Color.LightGray;
-           
+            if (selected)
+            {
+                this.BackColor = Color.FromArgb(127, 140, 141);
+            }
+            else
+            {
+                this.BackColor = Color.FromArgb(189, 195, 199);
+            }
+
         }
 
         private void ItemMouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = Color.Transparent;
+            if (selected)
+            {
+                this.BackColor = Color.FromArgb(52, 152, 219);
+            }
+            else
+            {
+                this.BackColor = Color.Transparent;
+            }
         }
 
-        private void ItemClick(object sender, EventArgs e)
+        public void ItemClick(object sender, EventArgs e)
         {
-            WasClicked(DateOfDay);
+            WasClicked(this, DateOfDay);
+        }
+
+
+        bool MouseIsOverItem()
+        {
+            if(MousePosition.X >= this.Location.X && MousePosition.X <= this.Location.X + this.Width
+                && MousePosition.Y >= this.Location.Y && MousePosition.Y <= this.Location.Y + this.Height)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

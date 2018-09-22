@@ -53,7 +53,7 @@ namespace WeatherApplication.View
                 HumidityLabel.Text = $"Humidity {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.Humidity} %";
                 WindLabel.Text = $"Wind {mainInfoPresenter.CityWeathers[selectedCity].CurrentWeather.WindSpeed} m/s";
                 UpdateDailyWeatherColumn();
-                UpdateHourlyColumn();
+                (DailyWeatherInfoTableLayoutPanel.Controls[0] as DailyItemUserControl)?.ItemClick(null, null);
             }
         }
 
@@ -82,7 +82,7 @@ namespace WeatherApplication.View
                 dailyItemUserControl.DateLabel.Text = $"{dailyWeathers[i].Date.Day}, {dailyItemUserControl.DateOfDay.DayOfWeek.ToString().Substring(0, 3)}";
                 dailyItemUserControl.MaxTemperatureLabel.Text = dailyWeathers[i].MaxTemperature.ToString();
                 dailyItemUserControl.MinTemperatureLabel.Text = dailyWeathers[i].MinTemperature.ToString();
-                dailyItemUserControl.WasClicked += UpdateDate;
+                dailyItemUserControl.WasClicked += ChangeSelectedHourlyItem;
 
                 DailyWeatherInfoTableLayoutPanel.ColumnCount++;
                 DailyWeatherInfoTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -90,9 +90,20 @@ namespace WeatherApplication.View
             }
         }
 
-        void UpdateDate(DateTime date)
+        void ChangeSelectedHourlyItem(object sender, DateTime date)
         {
             selectedDate = date;
+            foreach(DailyItemUserControl item in DailyWeatherInfoTableLayoutPanel.Controls)
+            {
+                if(sender == item)
+                {
+                    item.Selected = true;
+                }
+                else
+                {
+                    item.Selected = false;
+                }
+            }
             UpdateHourlyColumn();
         }
 
