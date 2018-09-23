@@ -10,5 +10,8 @@ namespace WeatherApplication.Services.StorageService
     interface IStorage
     {
         Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get; set; }
+        string SelectedCity { get; set; }
+
+        
     }
 }

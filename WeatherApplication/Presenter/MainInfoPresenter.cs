@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WeatherApplication.Exceptions;
 using WeatherApplication.Model;
 using WeatherApplication.Services;
@@ -14,20 +15,22 @@ namespace WeatherApplication.Presenter
 {
     class MainInfoPresenter: IMainInfoPresenter
     {
-        IMainInfoView mainInfoView;
-
+       
         IWeatherInfoGetter weatherInfoGetter;
+
+        IMainView mainView;
 
         
 
-        public MainInfoPresenter(IMainInfoView mainInfoView, IWeatherInfoGetter weatherInfoGetter)
+        public MainInfoPresenter(IMainView mainView, IWeatherInfoGetter weatherInfoGetter)
         {
-            this.mainInfoView = mainInfoView;
+            this.mainView = mainView;
             this.weatherInfoGetter = weatherInfoGetter;
            
         }
 
         public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get => Storage.StorageInstance.CityWeathers; set => Storage.StorageInstance.CityWeathers = value; }
+        public string SelectedCity { get => Storage.StorageInstance.SelectedCity; set => Storage.StorageInstance.SelectedCity = value; }
 
         public async Task AddCity(string city)
         {
@@ -52,13 +55,21 @@ namespace WeatherApplication.Presenter
                 LastUpdateTime = DateTime.Now
             };
 
-            mainInfoView.UpdateListOfCitites(city);
+            SelectedCity = city;
+
+            mainView.UpdateCitiesView();
+            mainView.UpdateWeatherInfoView();
         }
 
         public void RemoveCity(string city)
         {
             CityWeathers.Remove(city);
-            mainInfoView.UpdateListOfCitites(city);
+            if (!CityWeathers.Keys.Contains(city))
+            {
+                SelectedCity = CityWeathers.Keys.FirstOrDefault();
+            }
+            mainView.UpdateCitiesView();
+            mainView.UpdateWeatherInfoView();
         }
 
         public async void UpdateInfoOfSelectedCity(string city)
@@ -69,7 +80,7 @@ namespace WeatherApplication.Presenter
             CityWeathers[city].CurrentWeather = await currentWeather;
             CityWeathers[city].ForecastListOfWeathers = await forecastWeathers;
             CityWeathers[city].LastUpdateTime = DateTime.Now;
-            mainInfoView.UpdateInfoViewAboutWeather();
+            mainView.UpdateWeatherInfoView();
         }
     }
 }

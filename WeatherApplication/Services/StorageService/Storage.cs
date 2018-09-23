@@ -11,9 +11,13 @@ namespace WeatherApplication.Services.StorageService
     {
         Dictionary<string, TotalInfoAboutWeatherOfCity> cityWeathers;
 
+        string selectedCity = null;
+
         public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get => cityWeathers; set => cityWeathers = value; }
 
         static IStorage storage;
+
+        
 
         private Storage()
         {
@@ -22,6 +26,10 @@ namespace WeatherApplication.Services.StorageService
 
         public static IStorage StorageInstance { get => storage ?? (storage = new Storage()); }
 
-
+        public string SelectedCity
+        {
+            get => selectedCity;
+            set => selectedCity = value;
+        }
     }
 }

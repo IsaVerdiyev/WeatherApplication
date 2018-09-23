@@ -64,6 +64,9 @@
     <Compile Include="Services\WeatherInfoGetter\Exceptions\CityNotFoundException.cs" />
     <Compile Include="Services\WeatherInfoGetter\IWeatherInfoGetter.cs" />
     <Compile Include="Services\WeatherInfoGetter\OpenWeatherMapWeatherInfoGetter.cs" />
+    <Compile Include="View\IMainView.cs" />
+    <Compile Include="View\IUpdateCitiesView.cs" />
+    <Compile Include="View\IUpdateWeatherInfoView.cs" />
     <Compile Include="View\RemoveView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,12 +91,11 @@
     <Compile Include="View\SubViews\HourlyDetailsUserControl.Designer.cs">
       <DependentUpon>HourlyDetailsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\IMainInfoView.cs" />
-    <Compile Include="View\MainInfoView.cs">
+    <Compile Include="View\MainView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\MainInfoView.Designer.cs">
-      <DependentUpon>MainInfoView.cs</DependentUpon>
+    <Compile Include="View\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SubViews\HourlyItemUserControl.cs">
       <SubType>UserControl</SubType>
@@ -102,11 +104,23 @@
       <DependentUpon>HourlyItemUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SubViews\IHourlyUpdate.cs" />
+    <Compile Include="View\SubViews\NoCitiesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SubViews\NoCitiesView.Designer.cs">
+      <DependentUpon>NoCitiesView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\WeatherAppForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\WeatherAppForm.Designer.cs">
       <DependentUpon>WeatherAppForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\WeatherInfoView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\WeatherInfoView.Designer.cs">
+      <DependentUpon>WeatherInfoView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -129,14 +143,20 @@
     <EmbeddedResource Include="View\SubViews\HourlyDetailsUserControl.resx">
       <DependentUpon>HourlyDetailsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainInfoView.resx">
-      <DependentUpon>MainInfoView.cs</DependentUpon>
+    <EmbeddedResource Include="View\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SubViews\HourlyItemUserControl.resx">
       <DependentUpon>HourlyItemUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\SubViews\NoCitiesView.resx">
+      <DependentUpon>NoCitiesView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\WeatherAppForm.resx">
       <DependentUpon>WeatherAppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\WeatherInfoView.resx">
+      <DependentUpon>WeatherInfoView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

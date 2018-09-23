@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WeatherApplication.View
 {
-    interface IMainInfoView
+    interface IUpdateCitiesView
     {
-        void UpdateListOfCitites(string city);
-        void UpdateInfoViewAboutWeather();
+        void UpdateCitiesView();
     }
 }

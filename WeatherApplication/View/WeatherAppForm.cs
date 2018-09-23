@@ -17,7 +17,7 @@ namespace WeatherApplication.View
         {
             InitializeComponent();
             Application.ThreadException += (object sender, ThreadExceptionEventArgs e) => Application.Exit();
-            MainPanel.Controls.Add(new MainInfoView());
+            MainPanel.Controls.Add(new MainView());
         }
     }
 }
