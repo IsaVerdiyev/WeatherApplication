@@ -17,8 +17,11 @@ namespace WeatherApplication.Services.WeatherInfoGetter
         string firstPartOfRequestCurrent = "http://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
         string firstPartOfRequestForecast = "http://api.openweathermap.org/data/2.5/forecast?&units=metric&q=";
         string secondPartOfRequest = "&APPID=";
-        string IconPathFirstPart = "http://openweathermap.org/img/w/";
+        string iconUrlFirstPart = "http://openweathermap.org/img/w/";
+        string iconsFolderPath = "OpenWeatherMapIcons//";
         string apiKey;
+
+        public string IconsFolderPath => iconsFolderPath;
 
         public OpenWeatherMapWeatherInfoGetter(string apiKey)
         {
@@ -110,7 +113,11 @@ namespace WeatherApplication.Services.WeatherInfoGetter
                 throw new CityNotFoundException();
             }
 
-            List<Weather> list = jObj["list"].Select(w => new Weather
+
+            List<Weather> list = jObj["list"].Select(w => {
+                string icon = w.SelectToken("weather[0].icon").Value<string>();
+                DownloadIconIfNotExist(icon);
+                return new Weather
                 {
                     Temperature = w.SelectToken("main.temp").Value<double>(),
                     Date = w.SelectToken("dt_txt").Value<DateTime>(),
@@ -120,7 +127,8 @@ namespace WeatherApplication.Services.WeatherInfoGetter
                     Humidity = w.SelectToken("main.humidity").Value<double>(),
                     WindSpeed = w.SelectToken("wind.speed").Value<double>(),
                     Description = w.SelectToken("weather[0].description").Value<string>(),
-                    IconPath = $"{IconPathFirstPart}{w.SelectToken("weather[0].icon").Value<string>()}.png"
+                    IconPath = $"{IconsFolderPath}{icon}.png"
+                };
                 }).ToList<Weather>();
             return list;
         }
@@ -134,6 +142,10 @@ namespace WeatherApplication.Services.WeatherInfoGetter
                 throw new CityNotFoundException();
             }
 
+            string icon = jObj["weather"][0]["icon"].Value<string>();
+
+            DownloadIconIfNotExist(icon);
+
             Weather currentWeather = new Weather
             {
                 Temperature = jObj["main"]["temp"].Value<double>(),
@@ -144,9 +156,25 @@ namespace WeatherApplication.Services.WeatherInfoGetter
                 Humidity = jObj["main"]["humidity"].Value<double>(),
                 Pressure = jObj["main"]["pressure"].Value<double>(),
                 WindSpeed = jObj["wind"]["speed"].Value<double>(),
-                IconPath = $"{IconPathFirstPart}{jObj["weather"][0]["icon"].Value<string>()}.png"
+                IconPath = $"{IconsFolderPath}{icon}.png"
             };
             return currentWeather;
+        }
+
+        void DownloadIconIfNotExist(string iconName)
+        {
+            if (!File.Exists($"{ IconsFolderPath}{iconName}.png"))
+            {
+                if (!Directory.Exists(IconsFolderPath))
+                {
+                    Directory.CreateDirectory(IconsFolderPath);
+                }
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFileTaskAsync($"{iconUrlFirstPart}{iconName}.png", $"{IconsFolderPath}{iconName}.png");
+
+                }
+            }
         }
 
     }

@@ -14,5 +14,6 @@ namespace WeatherApplication.Presenter
         Task AddCity(string city);
         void RemoveCity(string city);
         void UpdateInfoOfSelectedCity(string city);
+        string IconFolderPath { get; }
     }
 }

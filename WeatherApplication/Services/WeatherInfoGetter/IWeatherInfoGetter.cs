@@ -13,5 +13,6 @@ namespace WeatherApplication.Services.WeatherInfoGetter
         Task<Weather> GetCurrentWeatherOfCityAsync(string city);
         List<Weather> GetForecastWeathersOfCity(string city);
         Task<List<Weather>> GetForecastWeathersOfCityAsync(string city);
+        string IconsFolderPath { get; }
     }
 }

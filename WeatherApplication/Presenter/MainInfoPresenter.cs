@@ -32,6 +32,8 @@ namespace WeatherApplication.Presenter
         public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get => Storage.StorageInstance.CityWeathers; set => Storage.StorageInstance.CityWeathers = value; }
         public string SelectedCity { get => Storage.StorageInstance.SelectedCity; set => Storage.StorageInstance.SelectedCity = value; }
 
+        public string IconFolderPath => weatherInfoGetter.IconsFolderPath;
+
         public async Task AddCity(string city)
         {
             if (String.IsNullOrWhiteSpace(city))

@@ -354,6 +354,7 @@
             this.SummaryButton.TabIndex = 1;
             this.SummaryButton.Text = "Summary";
             this.SummaryButton.UseVisualStyleBackColor = true;
+            this.SummaryButton.Click += new System.EventHandler(this.SummaryButton_Click);
             // 
             // DetailsButton
             // 
@@ -364,6 +365,7 @@
             this.DetailsButton.TabIndex = 2;
             this.DetailsButton.Text = "Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
+            this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
             // 
             // WeatherInfoView
             // 

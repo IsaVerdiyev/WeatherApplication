@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using WeatherApplication.View.SubViews;
 using WeatherApplication.Services.StorageService;
 using WeatherApplication.Model;
+using WeatherApplication.Presenter;
 
 namespace WeatherApplication.View
 {
@@ -18,42 +19,46 @@ namespace WeatherApplication.View
         HourlyGraphUserControl hourlyGraph;
         HourlyDetailsUserControl hourlyDetails;
 
+        IMainInfoPresenter mainInfoPresenter;
+
         DateTime selectedDate;
 
         string previousSelectedCity;
 
-        public WeatherInfoView()
+        public WeatherInfoView(IMainInfoPresenter mainInfoPresenter)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             hourlyGraph = new HourlyGraphUserControl();
             hourlyDetails = new HourlyDetailsUserControl();
             HourlyColumnTableLayoutPanel.Controls.Add(hourlyGraph);
+
+            this.mainInfoPresenter = mainInfoPresenter;
         }
 
         public void UpdateWeatherInfoView()
         {
-            string selectedCity = Storage.StorageInstance.SelectedCity;
-            if (previousSelectedCity != selectedCity || LastUpdateTimeLabel.Text != Storage.StorageInstance.CityWeathers[selectedCity].LastUpdateTime.ToShortTimeString())
+           
+            if (previousSelectedCity != mainInfoPresenter.SelectedCity || LastUpdateTimeLabel.Text != mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].LastUpdateTime.ToShortTimeString())
             {
 
-                CityNameLabel.Text = selectedCity;
-                DegreeLabel.Text = Storage.StorageInstance.CityWeathers[selectedCity].CurrentWeather.Temperature.ToString() + "°C";
-                IconPictureBox.Load(Storage.StorageInstance.CityWeathers[selectedCity].CurrentWeather.IconPath);
-                DescriptionLabel.Text = Storage.StorageInstance.CityWeathers[selectedCity].CurrentWeather.Description;
-                LastUpdateTimeLabel.Text = $"Last update time {Storage.StorageInstance.CityWeathers[selectedCity].LastUpdateTime.ToShortTimeString()}";
-                PressureLabel.Text = $"Pressure {Storage.StorageInstance.CityWeathers[selectedCity].CurrentWeather.Pressure} hPa";
-                HumidityLabel.Text = $"Humidity {Storage.StorageInstance.CityWeathers[selectedCity].CurrentWeather.Humidity} %";
-                WindLabel.Text = $"Wind {Storage.StorageInstance.CityWeathers[selectedCity].CurrentWeather.WindSpeed} m/s";
+                CityNameLabel.Text = mainInfoPresenter.SelectedCity;
+                DegreeLabel.Text = mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].CurrentWeather.Temperature.ToString() + "°C";
+                IconPictureBox.Load(mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].CurrentWeather.IconPath);
+                DescriptionLabel.Text = mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].CurrentWeather.Description;
+                LastUpdateTimeLabel.Text = $"Last update time {mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].LastUpdateTime.ToShortTimeString()}";
+                PressureLabel.Text = $"Pressure {mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].CurrentWeather.Pressure} hPa";
+                HumidityLabel.Text = $"Humidity {mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].CurrentWeather.Humidity} %";
+                WindLabel.Text = $"Wind {mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].CurrentWeather.WindSpeed} m/s";
                 UpdateDailyWeatherColumn();
                 (DailyWeatherInfoTableLayoutPanel.Controls[0] as DailyItemUserControl)?.ItemClick(null, null);
-                previousSelectedCity = selectedCity;
+                previousSelectedCity = mainInfoPresenter.SelectedCity;
             }
         }
 
         void UpdateDailyWeatherColumn()
         {
-            var dailyWeathers = (from weather in Storage.StorageInstance.CityWeathers[Storage.StorageInstance.SelectedCity].ForecastListOfWeathers
+            var dailyWeathers = (from weather in mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].ForecastListOfWeathers
                                  group weather by weather.Date.Date into weathersOfDay
                                  orderby weathersOfDay.Key
                                  let maxTemp = weathersOfDay.Max(x => x.MaxTemperature)
@@ -103,7 +108,7 @@ namespace WeatherApplication.View
 
         void UpdateHourlyColumn()
         {
-            List<Weather> hourlyWeathersForSelectedDay = Storage.StorageInstance.CityWeathers[Storage.StorageInstance.SelectedCity].ForecastListOfWeathers.Where(w => w.Date.Date == selectedDate).ToList<Weather>();
+            List<Weather> hourlyWeathersForSelectedDay = mainInfoPresenter.CityWeathers[mainInfoPresenter.SelectedCity].ForecastListOfWeathers.Where(w => w.Date.Date == selectedDate).ToList<Weather>();
             ((IHourlyUpdate)HourlyColumnTableLayoutPanel.Controls[1]).UpdateHourly(hourlyWeathersForSelectedDay);
 
         }

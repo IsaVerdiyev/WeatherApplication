@@ -32,7 +32,7 @@ namespace WeatherApplication.View
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
-            weatherInfoView = new WeatherInfoView();
+            weatherInfoView = new WeatherInfoView(mainInfoPresenter);
             noCitiesView = new NoCitiesView();
 
             MainTableLayoutPanel.Controls.Add(noCitiesView);
