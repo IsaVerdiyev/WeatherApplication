@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WeatherApplication.Exceptions;
 using WeatherApplication.Model;
 using WeatherApplication.Services;
+using WeatherApplication.Services.StorageService;
 using WeatherApplication.Services.WeatherInfoGetter;
 using WeatherApplication.View;
 
@@ -17,16 +18,16 @@ namespace WeatherApplication.Presenter
 
         IWeatherInfoGetter weatherInfoGetter;
 
-        Dictionary<string, TotalInfoAboutWeatherOfCity> cityWeathers;
+        
 
         public MainInfoPresenter(IMainInfoView mainInfoView, IWeatherInfoGetter weatherInfoGetter)
         {
             this.mainInfoView = mainInfoView;
             this.weatherInfoGetter = weatherInfoGetter;
-            CityWeathers = new Dictionary<string, TotalInfoAboutWeatherOfCity>();
+           
         }
 
-        public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get => cityWeathers; set => cityWeathers = value; }
+        public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get => Storage.StorageInstance.CityWeathers; set => Storage.StorageInstance.CityWeathers = value; }
 
         public async Task AddCity(string city)
         {

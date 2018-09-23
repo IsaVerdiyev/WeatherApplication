@@ -160,7 +160,7 @@ namespace WeatherApplication.View
                }
                catch (Exception ex)
                {
-                   MessageBox.Show(ex.Message, "caption", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   MessageBox.Show(ex.GetBaseException().Message + "\n" + ex.GetBaseException().StackTrace, "Exception inside mainInfoPresenter.AddCity happened ", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                }
            }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
