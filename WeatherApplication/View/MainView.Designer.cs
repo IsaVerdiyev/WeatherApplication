@@ -112,6 +112,7 @@
             this.NewCityTextBox.Name = "NewCityTextBox";
             this.NewCityTextBox.Size = new System.Drawing.Size(94, 20);
             this.NewCityTextBox.TabIndex = 3;
+            this.NewCityTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NewCityTextBox_KeyPress);
             // 
             // MainView
             // 

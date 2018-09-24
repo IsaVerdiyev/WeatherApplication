@@ -49,6 +49,7 @@ namespace WeatherApplication.View
                catch (CityAlreadyIsInListException ex)
                {
                    CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.FirstOrDefault(c => c == NewCityTextBox.Text);
+                   NewCityTextBox.Text = "";
                }
                catch (CityNameIsNullOrWhiteSpaceException ex)
                {
@@ -131,6 +132,14 @@ namespace WeatherApplication.View
                 weatherInfoView.UpdateWeatherInfoView();
             }
 
+        }
+
+        private void NewCityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                AddCity();
+            }
         }
     }
 }
