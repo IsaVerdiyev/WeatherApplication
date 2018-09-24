@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeatherApplication.Exceptions;
@@ -26,11 +28,38 @@ namespace WeatherApplication.Presenter
         {
             this.mainView = mainView;
             this.weatherInfoGetter = weatherInfoGetter;
-           
+            if (File.Exists(Storage.StorageInstance.SaveFilePath))
+            {
+                LoadStorageFromSave();
+            }
         }
 
-        public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get => Storage.StorageInstance.CityWeathers; set => Storage.StorageInstance.CityWeathers = value; }
-        public string SelectedCity { get => Storage.StorageInstance.SelectedCity; set => Storage.StorageInstance.SelectedCity = value; }
+        public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers {
+            get => Storage.StorageInstance.CityWeathers;
+            set
+            {
+                Storage.StorageInstance.CityWeathers = value;
+                Storage.StorageInstance.SaveAsync();
+            }
+        }
+        public string SelectedCity {
+            get => Storage.StorageInstance.SelectedCity;
+            set
+            {
+                Storage.StorageInstance.SelectedCity = value;
+                Storage.StorageInstance.SaveAsync().ContinueWith(t =>
+                {
+                    try
+                    {
+                        throw t.Exception.InnerExceptions.FirstOrDefault();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+                    }
+                }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+            }
+        }
 
         public string IconFolderPath => weatherInfoGetter.IconsFolderPath;
 
@@ -40,9 +69,10 @@ namespace WeatherApplication.Presenter
             {
                 throw new CityNameIsNullOrWhiteSpaceException();
             }
+            city = char.ToUpper(city[0]) + city.Substring(1);
             if (CityWeathers.ContainsKey(city))
             {
-                throw new CityAlreadyIsInListException();
+                throw new CityAlreadyIsInListException(city);
             }
 
             Weather currentWeatherOfCity = weatherInfoGetter.GetCurrentWeatherOfCity(city);
@@ -61,6 +91,16 @@ namespace WeatherApplication.Presenter
 
             mainView.UpdateCitiesView();
             mainView.UpdateWeatherInfoView();
+        }
+
+        public void LoadStorageFromSave()
+        {
+            Storage.StorageInstance.Load();
+        }
+
+        public void LoadStorageFromSaveAsync()
+        {
+            Storage.StorageInstance.LoadAsync();
         }
 
         public void RemoveCity(string city)

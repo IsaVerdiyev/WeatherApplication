@@ -59,6 +59,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DateTimeExtensions.cs" />
+    <Compile Include="Services\SaveLoadService\ISaveLoader.cs" />
+    <Compile Include="Services\SaveLoadService\JsonSaveLoader.cs" />
     <Compile Include="Services\StorageService\IStorage.cs" />
     <Compile Include="Services\StorageService\Storage.cs" />
     <Compile Include="Services\WeatherInfoGetter\Exceptions\CityNotFoundException.cs" />

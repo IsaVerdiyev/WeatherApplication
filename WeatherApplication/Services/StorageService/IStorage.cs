@@ -11,7 +11,10 @@ namespace WeatherApplication.Services.StorageService
     {
         Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers { get; set; }
         string SelectedCity { get; set; }
-
-        
+        void Save();
+        Task SaveAsync();
+        void Load();
+        Task LoadAsync();
+        string SaveFilePath { get; }
     }
 }

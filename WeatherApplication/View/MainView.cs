@@ -34,8 +34,10 @@ namespace WeatherApplication.View
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
             weatherInfoView = new WeatherInfoView(mainInfoPresenter);
             noCitiesView = new NoCitiesView();
-
             MainTableLayoutPanel.Controls.Add(noCitiesView);
+
+            UpdateCitiesView();
+            UpdateWeatherInfoView();
         }
 
         void AddCity()
@@ -48,7 +50,7 @@ namespace WeatherApplication.View
                }
                catch (CityAlreadyIsInListException ex)
                {
-                   CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.FirstOrDefault(c => c == NewCityTextBox.Text);
+                   CitiesComboBox.SelectedItem = mainInfoPresenter.CityWeathers.Keys.FirstOrDefault(c => c == ex.City);
                    NewCityTextBox.Text = "";
                }
                catch (CityNameIsNullOrWhiteSpaceException ex)

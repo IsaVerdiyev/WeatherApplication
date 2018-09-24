@@ -8,13 +8,14 @@ namespace WeatherApplication.Exceptions
 {
     class CityAlreadyIsInListException: Exception
     {
-        public CityAlreadyIsInListException(): base("City is already added to list")
+        public string City { get; private set; }
+        public CityAlreadyIsInListException(string city): base("City is already added to list")
         {
-
+            City = city;
         }
-        public CityAlreadyIsInListException(string message): base(message)
+        public CityAlreadyIsInListException(string message, string city): base(message)
         {
-
+            City = city;
         }
     }
 }
