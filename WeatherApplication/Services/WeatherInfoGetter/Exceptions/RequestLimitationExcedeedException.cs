@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WeatherApplication.Services.WeatherInfoGetter.Exceptions
 {
-    class RequestLimitationExcedeed: Exception
+    class RequestLimitationExcedeedException: Exception
     {
-        public RequestLimitationExcedeed(string message = "Request limitation was exceeded"):base(message)
+        public RequestLimitationExcedeedException(string message = "Request limitation was exceeded"):base(message)
         {
 
         }

@@ -236,7 +236,7 @@ namespace WeatherApplication.Services.WeatherInfoGetter
             }
             else if (jObject["cod"].Value<string>() == "429")
             {
-                throw new RequestLimitationExcedeed();
+                throw new RequestLimitationExcedeedException();
             }
             else if (jObject["cod"].Value<string>() == "401")
             {

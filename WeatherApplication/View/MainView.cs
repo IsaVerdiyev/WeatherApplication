@@ -114,7 +114,7 @@ namespace WeatherApplication.View
                {
                    MessageBox.Show("City wasn't found");
                }
-               catch(RequestLimitationExcedeed ex)
+               catch(RequestLimitationExcedeedException ex)
                {
                    MessageBox.Show(ex.Message);
                }
