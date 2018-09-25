@@ -27,17 +27,69 @@ namespace WeatherApplication.View
 
         NoCitiesView noCitiesView;
 
+        
+
         public MainView()
         {
             InitializeComponent();
-            this.Dock = DockStyle.Fill;
             mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
+            InitializeTasksInConstuctor();
+            this.Dock = DockStyle.Fill;
+
+
             weatherInfoView = new WeatherInfoView(mainInfoPresenter);
             noCitiesView = new NoCitiesView();
             MainTableLayoutPanel.Controls.Add(noCitiesView);
 
-            UpdateCitiesView();
-            UpdateWeatherInfoView();
+            
+        }
+
+        void InitializeTasksInConstuctor()
+        {
+            Task loadTaskFromSave = mainInfoPresenter.LoadStorageFromSaveIfExistAsync();
+            Task UpdateInfoFromNetAndUpdateView = loadTaskFromSave.ContinueWith(tLoadFromSave =>
+            {
+                foreach(var city in mainInfoPresenter.CityWeathers.Keys)
+                {
+                    mainInfoPresenter.UpdateInfoOfSelectedCityAsync(city).ContinueWith(tLoadFromNet =>
+                    {
+                        try
+                        {
+                            throw tLoadFromNet.Exception.InnerExceptions.FirstOrDefault();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show($"Exception occured in UpdateInfoOfSelectedCityAsync method \n{ex.Message}\n{ex.StackTrace}");
+                        }
+                    }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+                }
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
+
+            
+
+            loadTaskFromSave.ContinueWith(tLoadTaskFromSave =>
+            {
+                try
+                {
+                    throw tLoadTaskFromSave.Exception.InnerExceptions.FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Exception occured in LoadStorageFromSaveIfExistAsync method \n{ex.Message}\n{ex.StackTrace}");
+                }
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+
+            UpdateInfoFromNetAndUpdateView.ContinueWith(tLoadFromNetCommon =>
+            {
+                try
+                {
+                    throw tLoadFromNetCommon.Exception.InnerExceptions.FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Exception occured in LoadFromNetUpdatedInfoTask task \n{ex.Message}\n{ex.StackTrace}");
+                }
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         void AddCity()

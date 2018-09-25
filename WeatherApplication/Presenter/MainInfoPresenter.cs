@@ -28,10 +28,6 @@ namespace WeatherApplication.Presenter
         {
             this.mainView = mainView;
             this.weatherInfoGetter = weatherInfoGetter;
-            if (File.Exists(Storage.StorageInstance.SaveFilePath))
-            {
-                LoadStorageFromSave();
-            }
         }
 
         public Dictionary<string, TotalInfoAboutWeatherOfCity> CityWeathers {
@@ -93,14 +89,20 @@ namespace WeatherApplication.Presenter
             mainView.UpdateWeatherInfoView();
         }
 
-        public void LoadStorageFromSave()
+        public void LoadStorageFromSaveIfExist()
         {
-            Storage.StorageInstance.Load();
+            if (File.Exists(Storage.StorageInstance.SaveFilePath))
+            {
+                Storage.StorageInstance.Load();
+            }
         }
 
-        public void LoadStorageFromSaveAsync()
+        public async Task LoadStorageFromSaveIfExistAsync()
         {
-            Storage.StorageInstance.LoadAsync();
+            if (File.Exists(Storage.StorageInstance.SaveFilePath))
+            {
+                await Storage.StorageInstance.LoadAsync();
+            }
         }
 
         public void RemoveCity(string city)
@@ -114,7 +116,29 @@ namespace WeatherApplication.Presenter
             mainView.UpdateWeatherInfoView();
         }
 
-        public async void UpdateInfoOfSelectedCity(string city)
+        public void UpdateInfoOfSelectedCity(string city)
+        {
+            LoadFromNetUpdatedInfoAboutCity(city);
+            mainView.UpdateWeatherInfoView();
+        }
+
+        public async Task UpdateInfoOfSelectedCityAsync(string city)
+        {
+            await LoadFromNetUpdatedInfoAboutCityAsync(city);
+            mainView.UpdateWeatherInfoView();
+        }
+
+        public void LoadFromNetUpdatedInfoAboutCity(string city)
+        {
+            Weather currentWeather = weatherInfoGetter.GetCurrentWeatherOfCity(city);
+            List<Weather> forecastWeathers = weatherInfoGetter.GetForecastWeathersOfCity(city);
+
+            CityWeathers[city].CurrentWeather = currentWeather;
+            CityWeathers[city].ForecastListOfWeathers = forecastWeathers;
+            CityWeathers[city].LastUpdateTime = DateTime.Now;
+        }
+
+        public async Task LoadFromNetUpdatedInfoAboutCityAsync(string city)
         {
             Task<Weather> currentWeather = weatherInfoGetter.GetCurrentWeatherOfCityAsync(city);
             Task<List<Weather>> forecastWeathers = weatherInfoGetter.GetForecastWeathersOfCityAsync(city);
@@ -122,7 +146,6 @@ namespace WeatherApplication.Presenter
             CityWeathers[city].CurrentWeather = await currentWeather;
             CityWeathers[city].ForecastListOfWeathers = await forecastWeathers;
             CityWeathers[city].LastUpdateTime = DateTime.Now;
-            mainView.UpdateWeatherInfoView();
         }
     }
 }

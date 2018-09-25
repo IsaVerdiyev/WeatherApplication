@@ -14,8 +14,9 @@ namespace WeatherApplication.Presenter
         Task AddCity(string city);
         void RemoveCity(string city);
         void UpdateInfoOfSelectedCity(string city);
+        Task UpdateInfoOfSelectedCityAsync(string city);
         string IconFolderPath { get; }
-        void LoadStorageFromSave();
-        void LoadStorageFromSaveAsync();
+        void LoadStorageFromSaveIfExist();
+        Task LoadStorageFromSaveIfExistAsync();
     }
 }
