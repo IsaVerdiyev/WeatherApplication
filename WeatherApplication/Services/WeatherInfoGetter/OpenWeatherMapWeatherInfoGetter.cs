@@ -82,25 +82,82 @@ namespace WeatherApplication.Services.WeatherInfoGetter
 
         async Task<string> GetCurrentWeatherResponseFromWeatherOpenMapAsync(string city)
         {
-            using (WebClient client = new WebClient())
+            WebClient client = new WebClient();
+            try 
             {
                 return await client.DownloadStringTaskAsync($"{ firstPartOfRequestCurrent}{ city}{secondPartOfRequest}{apiKey}");
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null)
+                {
+                    using (StreamReader reader = new StreamReader(ex.Response.GetResponseStream()))
+                    {
+                        return reader.ReadToEnd();
+                    }
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            finally
+            {
+                client.Dispose();
             }
         }
 
         string GetForecastResponseFromWeatherOpenMap(string city)
         {
-            using (WebClient client = new WebClient())
+            WebClient client = new WebClient();
+            try
             {
                 return client.DownloadString($"{firstPartOfRequestForecast}{city}{secondPartOfRequest}{apiKey}");
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null)
+                {
+                    using (StreamReader reader = new StreamReader(ex.Response.GetResponseStream()))
+                    {
+                        return reader.ReadToEnd();
+                    }
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            finally
+            {
+                client.Dispose();
             }
         }
 
         async Task<string> GetForecastResponseFromWeatherOpenMapAsync(string city)
         {
-            using(WebClient client = new WebClient())
+            WebClient client = new WebClient();
+            try
             {
                 return await client.DownloadStringTaskAsync($"{firstPartOfRequestForecast}{city}{secondPartOfRequest}{apiKey}");
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null)
+                {
+                    using (StreamReader reader = new StreamReader(ex.Response.GetResponseStream()))
+                    {
+                        return reader.ReadToEnd();
+                    }
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            finally
+            {
+                client.Dispose();
             }
         }
 
@@ -108,10 +165,7 @@ namespace WeatherApplication.Services.WeatherInfoGetter
         {
             JObject jObj = JObject.Parse(jsonResponse);
 
-            if(jObj["cod"].Value<string>()=="404" && jObj["message"].Value<string>() == "city not found")
-            {
-                throw new CityNotFoundException();
-            }
+            CheckForExceptions(jObj);
 
 
             List<Weather> list = jObj["list"].Select(w => {
@@ -137,10 +191,7 @@ namespace WeatherApplication.Services.WeatherInfoGetter
         {
             JObject jObj = JObject.Parse(jsonResponse);
 
-            if (jObj["cod"].Value<string>() == "404" && jObj["message"].Value<string>() == "city not found")
-            {
-                throw new CityNotFoundException();
-            }
+            CheckForExceptions(jObj);
 
             string icon = jObj["weather"][0]["icon"].Value<string>();
 
@@ -177,5 +228,23 @@ namespace WeatherApplication.Services.WeatherInfoGetter
             }
         }
 
+        void CheckForExceptions(JObject jObject)
+        {
+            if (jObject["cod"].Value<string>() == "404" /*&& jObj["message"].Value<string>() == "city not found"*/)
+            {
+                throw new CityNotFoundException();
+            }
+            else if (jObject["cod"].Value<string>() == "429")
+            {
+                throw new RequestLimitationExcedeed();
+            }
+            else if (jObject["cod"].Value<string>() == "401")
+            {
+                throw new InvalidApiException(apiKey);
+            }
+        }
+
     }
+
+    
 }

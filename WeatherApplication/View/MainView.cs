@@ -16,6 +16,7 @@ using WeatherApplication.Exceptions;
 using WeatherApplication.Services.WeatherInfoGetter.Exceptions;
 using System.Net;
 using System.Threading;
+using System.Configuration;
 
 namespace WeatherApplication.View
 {
@@ -32,7 +33,7 @@ namespace WeatherApplication.View
         public MainView()
         {
             InitializeComponent();
-            mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter("d03069ad008b108f3f6e60663a3587f1"));
+            mainInfoPresenter = new MainInfoPresenter(this, new OpenWeatherMapWeatherInfoGetter(ConfigurationManager.AppSettings.Get("Api")));
             InitializeTasksInConstuctor();
             this.Dock = DockStyle.Fill;
 
@@ -112,6 +113,14 @@ namespace WeatherApplication.View
                catch (CityNotFoundException ex)
                {
                    MessageBox.Show("City wasn't found");
+               }
+               catch(RequestLimitationExcedeed ex)
+               {
+                   MessageBox.Show(ex.Message);
+               }
+               catch(InvalidApiException ex)
+               {
+                   MessageBox.Show($"Invalid api key {ex.ApiKey}\n Need to change api key in source code and recompile application","", MessageBoxButtons.OK, MessageBoxIcon.Error);
                }
                catch (WebException ex)
                {
