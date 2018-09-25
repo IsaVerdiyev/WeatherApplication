@@ -43,6 +43,8 @@
             // 
             // ItemTableLayoutPanel
             // 
+            this.ItemTableLayoutPanel.AutoSize = true;
+            this.ItemTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ItemTableLayoutPanel.ColumnCount = 1;
             this.ItemTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ItemTableLayoutPanel.Controls.Add(this.WindLabel, 0, 4);
@@ -61,7 +63,7 @@
             this.ItemTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.ItemTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.ItemTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.ItemTableLayoutPanel.Size = new System.Drawing.Size(150, 150);
+            this.ItemTableLayoutPanel.Size = new System.Drawing.Size(156, 156);
             this.ItemTableLayoutPanel.TabIndex = 0;
             // 
             // WindLabel
@@ -150,14 +152,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.ItemTableLayoutPanel);
             this.Name = "HourlyItemUserControl";
+            this.Size = new System.Drawing.Size(156, 156);
             this.ItemTableLayoutPanel.ResumeLayout(false);
             this.ItemTableLayoutPanel.PerformLayout();
             this.IconTableLayoutPanel.ResumeLayout(false);
             this.IconTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IconPictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
