@@ -147,5 +147,30 @@ namespace WeatherApplication.Presenter
             CityWeathers[city].ForecastListOfWeathers = await forecastWeathers;
             CityWeathers[city].LastUpdateTime = DateTime.Now;
         }
+
+        public void UpdateInfoOfAllCities()
+        {
+            foreach(var city in CityWeathers.Keys)
+            {
+                LoadFromNetUpdatedInfoAboutCity(city);
+            }
+            mainView.UpdateCitiesView();
+            mainView.UpdateWeatherInfoView();
+        }
+
+        public Task UpdateInfoOfAllCitiesAsync()
+        {
+            Task[] tasks = new Task[CityWeathers.Count];
+            int i = 0;
+            foreach(var city in CityWeathers.Keys)
+            {
+                tasks[i++] = LoadFromNetUpdatedInfoAboutCityAsync(city);
+            }
+            return Task.WhenAll(tasks).ContinueWith(t =>
+            {
+                mainView.UpdateCitiesView();
+                mainView.UpdateWeatherInfoView();
+            });
+        }
     }
 }

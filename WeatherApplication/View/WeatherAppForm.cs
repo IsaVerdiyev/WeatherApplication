@@ -44,25 +44,11 @@ namespace WeatherApplication.View
         void InitializeTasksInConstuctor()
         {
             Task loadTaskFromSave = mainInfoPresenter.LoadStorageFromSaveIfExistAsync();
-            Task UpdateInfoFromNetAndUpdateView = loadTaskFromSave.ContinueWith(tLoadFromSave =>
-            {
-                foreach (var city in mainInfoPresenter.CityWeathers.Keys)
-                {
-                    mainInfoPresenter.UpdateInfoOfSelectedCityAsync(city).ContinueWith(tLoadFromNet =>
-                    {
-                        try
-                        {
-                            throw tLoadFromNet.Exception.InnerExceptions.FirstOrDefault();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"Exception occured in UpdateInfoOfSelectedCityAsync method \n{ex.Message}\n{ex.StackTrace}");
-                        }
-                    }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
-                }
-                (MainPanel.Controls[0] as IMainView).UpdateCitiesView();
-            }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
-
+            Task updateInfoFromNetAndUpdateView = loadTaskFromSave.ContinueWith(
+                t => mainInfoPresenter.UpdateInfoOfAllCitiesAsync(), 
+                CancellationToken.None, 
+                TaskContinuationOptions.OnlyOnRanToCompletion, 
+                TaskScheduler.FromCurrentSynchronizationContext());
 
 
             loadTaskFromSave.ContinueWith(tLoadTaskFromSave =>
@@ -77,17 +63,19 @@ namespace WeatherApplication.View
                 }
             }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
 
-            UpdateInfoFromNetAndUpdateView.ContinueWith(tLoadFromNetCommon =>
+
+            updateInfoFromNetAndUpdateView.ContinueWith(t =>
             {
                 try
                 {
-                    throw tLoadFromNetCommon.Exception.InnerExceptions.FirstOrDefault();
+                    throw t.Exception.InnerExceptions.FirstOrDefault();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Exception occured in LoadFromNetUpdatedInfoTask task \n{ex.Message}\n{ex.StackTrace}");
+                    MessageBox.Show($"Exception occured in updateInfoFromNetAndUpdateView method \n{ex.Message}\n{ex.StackTrace}");
                 }
             }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+
         }
 
     }
