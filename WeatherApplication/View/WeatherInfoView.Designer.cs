@@ -37,7 +37,6 @@
             this.DegreeLabel = new System.Windows.Forms.Label();
             this.IconPictureBox = new System.Windows.Forms.PictureBox();
             this.DescriptionLabel = new System.Windows.Forms.Label();
-            this.LastUpdateTimeLabel = new System.Windows.Forms.Label();
             this.CurrentTemperatureAdditionalInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.PressureLabel = new System.Windows.Forms.Label();
             this.HumidityLabel = new System.Windows.Forms.Label();
@@ -50,6 +49,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.SummaryButton = new System.Windows.Forms.Button();
             this.DetailsButton = new System.Windows.Forms.Button();
+            this.UpdateTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.LastUpdateTimeLabel = new System.Windows.Forms.Label();
+            this.UpdateButton = new System.Windows.Forms.Button();
             this.WeatherInfoWrapperPanel.SuspendLayout();
             this.WeatherInfoTableLayoutPanel.SuspendLayout();
             this.CurrentTemperatureTableLayoutPanelWrapper.SuspendLayout();
@@ -60,6 +62,7 @@
             this.DailyWrapperTableLayoutPanel.SuspendLayout();
             this.HourlyColumnTableLayoutPanel.SuspendLayout();
             this.HourlySettingsTableLayoutPanel.SuspendLayout();
+            this.UpdateTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // WeatherInfoWrapperPanel
@@ -118,8 +121,8 @@
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.CityNameLabel, 0, 0);
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.DegreeImageTableLayoutPanel, 0, 1);
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.DescriptionLabel, 0, 2);
-            this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.LastUpdateTimeLabel, 0, 3);
             this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.CurrentTemperatureAdditionalInfoTableLayoutPanel, 0, 4);
+            this.CurrentTemperatureTableLayoutPanel.Controls.Add(this.UpdateTableLayoutPanel, 0, 3);
             this.CurrentTemperatureTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CurrentTemperatureTableLayoutPanel.Location = new System.Drawing.Point(212, 3);
             this.CurrentTemperatureTableLayoutPanel.Name = "CurrentTemperatureTableLayoutPanel";
@@ -192,18 +195,6 @@
             this.DescriptionLabel.Size = new System.Drawing.Size(312, 57);
             this.DescriptionLabel.TabIndex = 2;
             this.DescriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LastUpdateTimeLabel
-            // 
-            this.LastUpdateTimeLabel.AutoSize = true;
-            this.LastUpdateTimeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LastUpdateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LastUpdateTimeLabel.Location = new System.Drawing.Point(3, 171);
-            this.LastUpdateTimeLabel.Name = "LastUpdateTimeLabel";
-            this.LastUpdateTimeLabel.Size = new System.Drawing.Size(312, 57);
-            this.LastUpdateTimeLabel.TabIndex = 3;
-            this.LastUpdateTimeLabel.Text = "Last updated at ";
-            this.LastUpdateTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CurrentTemperatureAdditionalInfoTableLayoutPanel
             // 
@@ -367,6 +358,48 @@
             this.DetailsButton.UseVisualStyleBackColor = true;
             this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
             // 
+            // UpdateTableLayoutPanel
+            // 
+            this.UpdateTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.UpdateTableLayoutPanel.ColumnCount = 4;
+            this.UpdateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.UpdateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.UpdateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.UpdateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.UpdateTableLayoutPanel.Controls.Add(this.LastUpdateTimeLabel, 1, 0);
+            this.UpdateTableLayoutPanel.Controls.Add(this.UpdateButton, 2, 0);
+            this.UpdateTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateTableLayoutPanel.Location = new System.Drawing.Point(3, 174);
+            this.UpdateTableLayoutPanel.Name = "UpdateTableLayoutPanel";
+            this.UpdateTableLayoutPanel.RowCount = 1;
+            this.UpdateTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.UpdateTableLayoutPanel.Size = new System.Drawing.Size(312, 51);
+            this.UpdateTableLayoutPanel.TabIndex = 5;
+            // 
+            // LastUpdateTimeLabel
+            // 
+            this.LastUpdateTimeLabel.AutoSize = true;
+            this.LastUpdateTimeLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.LastUpdateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastUpdateTimeLabel.Location = new System.Drawing.Point(32, 0);
+            this.LastUpdateTimeLabel.Name = "LastUpdateTimeLabel";
+            this.LastUpdateTimeLabel.Size = new System.Drawing.Size(167, 51);
+            this.LastUpdateTimeLabel.TabIndex = 4;
+            this.LastUpdateTimeLabel.Text = "Last updated at ";
+            this.LastUpdateTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.UpdateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateButton.Location = new System.Drawing.Point(205, 3);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(75, 45);
+            this.UpdateButton.TabIndex = 5;
+            this.UpdateButton.Text = "↺";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // WeatherInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,6 +425,8 @@
             this.HourlyColumnTableLayoutPanel.ResumeLayout(false);
             this.HourlySettingsTableLayoutPanel.ResumeLayout(false);
             this.HourlySettingsTableLayoutPanel.PerformLayout();
+            this.UpdateTableLayoutPanel.ResumeLayout(false);
+            this.UpdateTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -407,7 +442,6 @@
         private System.Windows.Forms.Label DegreeLabel;
         private System.Windows.Forms.PictureBox IconPictureBox;
         private System.Windows.Forms.Label DescriptionLabel;
-        private System.Windows.Forms.Label LastUpdateTimeLabel;
         private System.Windows.Forms.TableLayoutPanel CurrentTemperatureAdditionalInfoTableLayoutPanel;
         private System.Windows.Forms.Label PressureLabel;
         private System.Windows.Forms.Label HumidityLabel;
@@ -420,5 +454,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button SummaryButton;
         private System.Windows.Forms.Button DetailsButton;
+        private System.Windows.Forms.TableLayoutPanel UpdateTableLayoutPanel;
+        private System.Windows.Forms.Label LastUpdateTimeLabel;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }

@@ -11,6 +11,7 @@ using WeatherApplication.View.SubViews;
 using WeatherApplication.Services.StorageService;
 using WeatherApplication.Model;
 using WeatherApplication.Presenter;
+using System.Threading;
 
 namespace WeatherApplication.View
 {
@@ -24,6 +25,7 @@ namespace WeatherApplication.View
         DateTime selectedDate;
 
         string previousSelectedCity;
+        private CancellationToken cancellationToken;
 
         public WeatherInfoView(IMainInfoPresenter mainInfoPresenter)
         {
@@ -136,6 +138,20 @@ namespace WeatherApplication.View
             UpdateHourlyColumn();
         }
 
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            mainInfoPresenter.UpdateInfoOfSelectedCityAsync(mainInfoPresenter.SelectedCity).ContinueWith(t =>
+            {
+                try
+                {
+                    t.Exception.InnerExceptions.FirstOrDefault();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"Exception occured in UpdateButton_Click function \n {ex.Message}\n{ex.StackTrace}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+        }
     }
 
 
